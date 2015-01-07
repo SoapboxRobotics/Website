@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="blocklyduino/" kind="src" path="apps"/>
+	<classpathentry kind="src" path="apps/blocklyduino"/>
+	<classpathentry kind="src" path="core"/>
+	<classpathentry excluding="arduino/" kind="src" path="generators"/>
+	<classpathentry kind="src" path="generators/arduino"/>
+	<classpathentry kind="src" path="language/common"/>
+	<classpathentry kind="src" path="language/en"/>
+	<classpathentry excluding="generators/" kind="src" path="tests"/>
+	<classpathentry kind="src" path="tests/generators"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
