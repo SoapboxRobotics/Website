@@ -126,6 +126,9 @@
 		<style>
 			body {
 				background-color: Lavender;
+				/*background-color: #ff;*/
+				background-image: url(http://www.transparenttextures.com/patterns/45-degree-fabric-light.png);
+				/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 				font-family: sans-serif;
 				margin: 0;
 				padding: 0;
@@ -151,7 +154,8 @@
 
 			/* Tabs */
 			#tabRow > td {
-				border: 1px solid #ccc;
+				/*border: 1px solid #ccc;*/
+				border: none;
 			}
 			td.tabon {
 				border-bottom-color: #ddd !important;
@@ -200,39 +204,56 @@
 				display: hidden;
 			}
 			@font-face {
-				font-family: ArchitectsDaughter;
-				src: url("fonts/ArchitectsDaughter.ttf");
+				font-family: Playtime;
+				src: url("fonts/playtime.ttf");
 			}
 			#content_arduino {
-				height: 100%;
-				width: 49%;
-				padding: 0;
-				margin: 0;
+				height: 500px;
+				width: 400px;
+				padding: 20px;
+				margin: 75px auto;
 				/*border: 1px solid #ccc;*/
 				border-top-style: none;
 				overflow: hidden;
-				float: right;
-				font-family: ArchitectsDaughter;
-				font-size: 15px;
+				/*float: right;*/
+				font-family: Playtime;
+				font-size: 20px;
 			}
 			#textarea_xml, #textarea_arduino {
-				width: 100%;
+				width: 83%;
 				height: 100%;
 				/*border: bold;*/
 				border: none;
 				resize: none;
-				background-color: #eeeeee;
-				background-image: url(http://www.transparenttextures.com/patterns/rice-paper-3.png);
-				background-repeat: repeat;
-				background-size: 100px;
+				background-color: transparent;
+				margin: -20px 10px;
+				/*background-image: url(http://www.transparenttextures.com/patterns/rice-paper-3.png);*/
+				/*background-repeat: repeat;*/
+				/*background-size: 100px;*/
 				/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 			}
+			
+			#notebook{
+				width: 600px;
+				height: 710px;
+				background-image: url("media/Notebook.svg") ;
+				background-repeat: no-repeat;
+				background-size: 500px;
+				position: absolute;
+				top: 18%;
+				right: 1%;
+				
+				
+			}
+			
 			iframe {
 				width: 50%;
 				height: 100%;
-				border: 1px solid #ccc;
+				border: 1px solid #00A17D;
 				border-top-style: 5px solid DarkGrey;
+				border-radius: 10px;
 				float: left;
+				margin-left: 10px;
 			}
 			button {
 				padding: 1px 1em;
@@ -344,9 +365,8 @@
 				<td><a href="http://soapboxrobotics.com"><img src="http://i.imgur.com/3mu5v71.png" style="width:125px;height:75px" border="1" alt="Soapbox Robotics"></a>
 				<button id="blinkload" onclick="blinkload()">
 					Blink!
-				</button>
-				<!--<button id="tutorial" data-toggle="modal" data-target="#myModal">
-					Tutorial
+				</button><!--<button id="tutorial" data-toggle="modal" data-target="#myModal">
+				Tutorial
 				</button></td> -->
 			</tr>
 			<td>
@@ -373,8 +393,10 @@
 			</tr>
 			<tr>
 				<td height="100%"><iframe id="content_blocks" src="frame.html" align="left"></iframe>
-				<div id="content_arduino">
-					<textarea id="textarea_arduino"></textarea>
+				<div id="notebook">
+					<div id="content_arduino">
+						<textarea id="textarea_arduino"></textarea>
+					</div>
 				</div>
 				<div id="content_xml">
 					<textarea id="textarea_xml" readonly></textarea>
