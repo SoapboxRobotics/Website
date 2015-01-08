@@ -198,7 +198,7 @@
 	fill: transparent;
 }
 .blocklyToolboxOptions > .blocklyMenuDiv:hover {
-	fill: #207178;
+	fill: #51636D;
 }
 .blocklyContextMenuOptions > .blocklyMenuDiv:hover > rect, .blocklyDropdownMenuOptions > .blocklyMenuDiv:hover > rect {
 	fill: #2566BF;
@@ -206,13 +206,12 @@
 
 /* for selected category in menu*/
 .blocklyMenuSelected > rect {
-	fill: #207178;
+	fill: #51636D;
 }
 .blocklyMenuText {
 	cursor: default !important;
 	font-family: Roboto-Bold, sans-serif;
-	/*font-size: 15px; *//* All context menu sizes are based on pixels. */
-	font-size: 100%;
+	font-size: 15px; /* All context menu sizes are based on pixels. */
 	text-align: justify;
 	border:1px solid black;
 	fill: #fff;
@@ -228,12 +227,12 @@
 	fill: #fff;
 }
 .blocklyToolboxBackground {
-	/*fill: #174C4F;*/
-	fill: transparent;
+	fill: #3A3831;
+	
 }
 .blocklyFlyoutBackground {
-	fill: #207178;
-	fill-opacity: 1;
+	fill: #51636D;
+	fill-opacity: 0.8;
 }
 .blocklyColourBackground {
 	fill: #666;
