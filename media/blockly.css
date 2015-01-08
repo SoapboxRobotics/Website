@@ -33,8 +33,9 @@
 }
 
 .blocklySvg {
-	background-color: #fdfdfd;
-	background-image: url(http://www.transparenttextures.com/patterns/project-paper.png);
+	background: transparent;
+	/*background-color: #fdfdfd;
+	background-image: url(http://www.transparenttextures.com/patterns/project-paper.png);*/
 	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 .blocklyWidgetDiv {
@@ -193,7 +194,8 @@
 	fill: #194582;
 }
 .blocklyToolboxOptions > .blocklyMenuDiv {
-	fill: #174C4F;
+	/*fill: #174C4F;*/
+	fill: transparent;
 }
 .blocklyToolboxOptions > .blocklyMenuDiv:hover {
 	fill: #207178;
@@ -209,8 +211,10 @@
 .blocklyMenuText {
 	cursor: default !important;
 	font-family: Roboto-Bold, sans-serif;
-	font-size: 15px; /* All context menu sizes are based on pixels. */
+	/*font-size: 15px; *//* All context menu sizes are based on pixels. */
+	font-size: 100%;
 	text-align: justify;
+	border:1px solid black;
 	fill: #fff;
 }
 
@@ -224,7 +228,8 @@
 	fill: #fff;
 }
 .blocklyToolboxBackground {
-	fill: #174C4F;
+	/*fill: #174C4F;*/
+	fill: transparent;
 }
 .blocklyFlyoutBackground {
 	fill: #207178;
