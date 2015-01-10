@@ -765,10 +765,10 @@ compilerflasher = function(lf) {
                             if (total_length > pl.max_monitor_length) {
                                 pl.serialMonitorVal = pl.serialMonitorVal.substring(total_length - pl.max_monitor_length) + pl.serialMonitorToAppend;
                                 $("#serial_hud").html(document.createTextNode(pl.serialMonitorVal));
-                                // $("#debug").text(document.createTextNode("test"));
+                                $("#debug").text(document.createTextNode("test"));
                             } else {
                                 pl.serialMonitorVal = pl.serialMonitorVal + pl.serialMonitorToAppend;
-                                //$("#serial_hud").append(document.createTextNode(pl.serialMonitorToAppend));
+                                $("#serial_hud").append(document.createTextNode(pl.serialMonitorToAppend));
                                 $("#debug").append(document.createTextNode(pl.serialMonitorToAppend));
                             }
 
