@@ -7,6 +7,11 @@
 		<script type="text/javascript" src="FileSaver.min.js"></script>
 		<script type="text/javascript" src="blockly_helper.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="compilerflasher.js" type="text/javascript"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="smoothie.js"></script>
+		
 		<script>
 			/**
 			 * List of tab names.
@@ -63,6 +68,14 @@
 
 			function blinkload() {
 				var str = '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="inout_digital_write" x="106" y="53"><title name="PIN">13</title><title name="STAT">HIGH</title><next><block type="base_delay" inline="true"><value name="DELAY_TIME"><block type="math_number"><title name="NUM">1000</title></block></value><next><block type="inout_digital_write"><title name="PIN">13</title><title name="STAT">LOW</title><next><block type="base_delay" inline="true"><value name="DELAY_TIME"><block type="math_number"><title name="NUM">1000</title></block></value></block></next></block></next></block></next></block></xml>';
+				document.getElementById('blinkload').style.border = ' 1px solid darkGray';
+				//document.getElementById('arduinoCode').style.border = ' 3px solid darkblue';
+				var xml = Blockly.Xml.textToDom(str);
+				Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+				document.getElementById('blinkload').value = '';
+			}
+			function serialReadload() {
+				var str = '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="serial_read" x="106" y="146"><title name="PIN">A0</title></block><block type="base_delay" inline="true" x="107" y="178"><value name="DELAY_TIME"><block type="math_number"><title name="NUM">1000</title></block></value></block></xml>';
 				document.getElementById('blinkload').style.border = ' 1px solid darkGray';
 				//document.getElementById('arduinoCode').style.border = ' 3px solid darkblue';
 				var xml = Blockly.Xml.textToDom(str);
@@ -362,6 +375,8 @@
 				<td><a href="http://soapboxrobotics.com"><img src="http://i.imgur.com/3mu5v71.png" style="width:125px;height:75px" border="1" alt="Soapbox Robotics"></a>
 				<button id="blinkload" onclick="blinkload()">
 					Blink!
+				<button id="serialReadload" onclick="serialReadload()">
+				    Serial Read!
 				</button><!--<button id="tutorial" data-toggle="modal" data-target="#myModal">
 				Tutorial
 				</button></td> -->
@@ -410,36 +425,41 @@
 			</tr>
 			<tr>
 				<td>
-				<button id="cb_cf_serial_monitor_connect">
-					Open Serial Monitor
-				</button><div id="cb_cf_serial_monitor"></div></td>
+				<button id="cb_cf_serial_monitor_connect">Open Serial Monitor
+				</button>
+				</td>
 			</tr>
+			<tr>
+				<td>
+				<div id="serialTest">
+					<textarea id="textarea_serialTest"></textarea>
+				</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<canvas id="mycanvas" width="400" height="100"></canvas>
+				</td>
+			</tr>
+			
 
 		</table>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="//codebender.cc/embed/compilerflasher.js" type="text/javascript"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 		<script type="text/javascript">
 			function getFiles() {
 				return {
 					"sketch.ino" : $("#textarea_arduino").val()
 				}
 			}
+			
+			$(document).ready(function(){
+            	compilerflasher = new compilerflasher(getFiles); 
+        	});
+        	function serialRead(){         					
+				document.getElementById('serialTest').value= compilerflasher.comparePluginVersions(2,1);
+			}
 
 
-			$(document).ready(function() {
-				compilerflasher = new compilerflasher(getFiles);
-
-				compilerflasher.on("pre_verify", function() {
-					$("#event_msg").append('pre_verify event fired!<br/><br/>')
-				});
-				compilerflasher.on("verification_succeed", function(binary_size) {
-					$("#event_msg").append('verification_succeed event fired! Sketch size: ' + binary_size + "<br/><br/>")
-				});
-				compilerflasher.on("verification_failed", function(error_output) {
-					$("#event_msg").append("verification_failed event fired! \nCompilation error: <pre>" + error_output + "</pre><br/><br/>")
-				});
-			});
 		</script>
 	</body>
 </html>
