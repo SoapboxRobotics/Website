@@ -10732,7 +10732,7 @@ Blockly.Flyout = function() {
 	this.workspace_ = new Blockly.Workspace(!1)
 };
 Blockly.Flyout.prototype.autoClose = !0;
-Blockly.Flyout.prototype.CORNER_RADIUS = 8;
+Blockly.Flyout.prototype.CORNER_RADIUS = 2;
 Blockly.Flyout.prototype.onResizeWrapper_ = null;
 Blockly.Flyout.prototype.createDom = function() {
 	this.svgGroup_ = Blockly.createSvgElement("g", {}, null);
@@ -12031,7 +12031,7 @@ Blockly.Trashcan.prototype.WIDTH_ = 47;
 Blockly.Trashcan.prototype.BODY_HEIGHT_ = 45;
 Blockly.Trashcan.prototype.LID_HEIGHT_ = 15;
 Blockly.Trashcan.prototype.MARGIN_BOTTOM_ = 35;
-Blockly.Trashcan.prototype.MARGIN_SIDE_ = 35;
+ Blockly.Trashcan.prototype.MARGIN_SIDE_ = 70;
 Blockly.Trashcan.prototype.isOpen = !1;
 Blockly.Trashcan.prototype.svgGroup_ = null;
 Blockly.Trashcan.prototype.svgBody_ = null;
