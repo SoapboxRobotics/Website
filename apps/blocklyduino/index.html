@@ -11,7 +11,7 @@
 		<script src="compilerflasher.js" type="text/javascript"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="smoothie.js"></script>
-		
+
 		<script>
 			/**
 			 * List of tab names.
@@ -74,6 +74,7 @@
 				Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
 				document.getElementById('blinkload').value = '';
 			}
+
 			function serialReadload() {
 				var str = '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="serial_read" x="106" y="146"><title name="PIN">A0</title></block><block type="base_delay" inline="true" x="107" y="178"><value name="DELAY_TIME"><block type="math_number"><title name="NUM">1000</title></block></value></block></xml>';
 				document.getElementById('blinkload').style.border = ' 1px solid darkGray';
@@ -138,14 +139,13 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<style>
 			body {
-				background-color: Lavender;
-				/*background-color: #ff;*/
-				/*background-image: url(http://www.transparenttextures.com/patterns/45-degree-fabric-light.png);*/
-				/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+				/*background-color: Lavender;
+				 background-image: url(http://www.transparenttextures.com/patterns/cardboard.png);*/
+				background-image: url("media/CamoBG.png");
+				background-size: cover;
 				font-family: sans-serif;
 				margin: 0;
 				padding: 0;
-				/*overflow: hidden;*/
 			}
 			.blocklySvg {
 				height: 100%;
@@ -167,8 +167,11 @@
 
 			/* Tabs */
 			#tabRow > td {
-				/*border: 1px solid #ccc;*/
 				border: none;
+				position: absolute;
+				margin-right: 10%;
+				margin-top: 3%;
+				right: 0;
 			}
 			td.tabon {
 				border-bottom-color: #ddd !important;
@@ -210,7 +213,6 @@
 				width: 50%;
 				padding: 0;
 				margin: 0;
-				/*border: 1px solid #ccc;*/
 				border-top-style: none;
 				overflow: hidden;
 				float: left;
@@ -221,17 +223,22 @@
 				src: url("fonts/playtime.ttf");
 			}
 			#content_arduino {
-				height: 85.5%;
-				width: 80%;
-				padding-right: 50px;
-				padding-bottom: 7.50%;
-				margin: 7% auto;
+				height: 83%;
+				width: 98%;
+				margin: 14% 1% 1% 1%;
+				bottom: 0;
 				border-top-style: none;
 				overflow: hidden;
 				font-family: Playtime;
+				padding-left: 10px;
 				font-size: 20px;
-				border-top: 1px solid #CCCCCC;
-				border-bottom: 1px solid #CCCCCC;
+				background-color: #edc951;
+				background-image: url(http://www.transparenttextures.com/patterns/white-brushed.png);
+				/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
+				border-top: 1px solid #EDC951;
+				border-bottom: 1px solid #EDC951;
+				z-index: 2;
 			}
 			#textarea_xml, #textarea_arduino {
 				width: 100%;
@@ -239,54 +246,69 @@
 				border: none;
 				resize: none;
 				background-color: transparent;
-				margin: 7% 5%;
+				margin: 1em auto;
+				z-index: 999;
 			}
 
-			#notebook {
-				width: 49.50%;
+			#rightPage {
+				width: 49.5%;
 				height: 100%;
-				background-image: url("media/RightPage.svg");
-				background-repeat: no-repeat;
-				background-size: 100% 100%;
+				background-color: #00A0B0;
+				/*background-color: transparent;*/
 				margin-right: 0.5%;
 				float: right;
+				z-index: 999;
 			}
 			#leftPage {
-				background-image: url("media/LeftPage-nobar.svg");
-				background-repeat: no-repeat;
-				background-size: 100% 100%;
+				/*background-color: #f9f1d5;*/
+				background-color: transparent;
 				height: 100%;
 				width: 49.5%;
 				float: left;
 				margin-left: 0.5%;
+				/*background-image: url(http://www.transparenttextures.com/patterns/cardboard.png);*/
 			}
 
 			iframe {
-				width: 100%;
-				height: 93%;
+				width: 98%;
+				height: 98%;
+				margin: 1% 1% 1% 1%;
 				background: transparent;
-				border: none;
+				border: 2px solid #EDC951;
 				float: right;
+			}
+
+			#arduinoCode{
+				background-color: #EB6841;
+				border: 2px solid white;
+				color: white;
+				font-size: 1.5em;
 			}
 
 			button {
 				padding: 1px 1em;
-				font-size: 90%;
-				border-radius: 4px;
-				border: 1px solid darkGrey;
-				background-color: Lavender;
-				color: slategrey;
+				/*font-size: 90%;*/
+				/*border: none;*/
+				/*background-color: Lavender;*/
+				/*color: slategrey;*/
+				background-color: #EB6841;
+				border: 2px solid white;
+				color: white;
+				font-size: 1.5em;
 			}
+
 			button.launch {
 				border: 1px solid #d43;
 				background-color: #d43;
 				color: white;
 			}
 			button:active {
-				border: 1px solid blue !important;
+				/*border: 1px solid blue !important;*/
+				border: none;
 			}
 			button:hover {
-				box-shadow: 2px 2px 5px #888;
+				box-shadow: 2px -2px 2px #888;
+				z-index: 1;
 			}
 			#sample-button, #tutorial {
 				border: 3px solid darkblue;
@@ -406,11 +428,11 @@
 				<td><!-- <a href="http://soapboxrobotics.com"><img src="http://i.imgur.com/3mu5v71.png" style="width:125px;height:75px" border="1" alt="Soapbox Robotics"></a> -->
 				<button id="blinkload" onclick="blinkload()">
 					Blink!
-				<button id="serialReadload" onclick="serialReadload()">
-				    Serial Read!
-				</button><!--<button id="tutorial" data-toggle="modal" data-target="#myModal">
-				Tutorial
-				</button></td> -->
+					<button id="serialReadload" onclick="serialReadload()">
+						Serial Read!
+					</button><!--<button id="tutorial" data-toggle="modal" data-target="#myModal">
+					Tutorial
+					</button></td> -->
 			</tr>
 			<td>
 			<table>
@@ -419,7 +441,7 @@
 					<td id="tab_xml" class="taboff" onclick="tabClick(this.id)">XML</td>
 					<td class="tabmin"><span style="padding-left:470px;"></span>
 					<button id="arduinoCode" onclick="arduinoCode()">
-						Arduino >>
+						Arduino
 					</button><!-- Button trigger modal -->
 					<button onclick="discard()">
 						Discard
@@ -439,7 +461,7 @@
 				<div id="leftPage">
 					<iframe id="content_blocks" src="frame.html" align="left"></iframe>
 				</div>
-				<div id="notebook">
+				<div id="rightPage">
 					<div id="content_arduino">
 						<textarea id="textarea_arduino"></textarea>
 					</div>
@@ -459,21 +481,18 @@
 			</tr>
 			<tr>
 				<td>
-				<button id="cb_cf_serial_monitor_connect">Open Serial Monitor
-				</button>
-				</td>
+				<button id="cb_cf_serial_monitor_connect">
+					Open Serial Monitor
+				</button></td>
 			</tr>
 			<tr>
 				<td>
 				<div id="serialTest">
 					<textarea id="textarea_serialTest"></textarea>
-				</div>
-				</td>
+				</div></td>
 			</tr>
 			<tr>
-				<td>
-					<canvas id="mycanvas" width="400" height="100"></canvas>
-				</td>
+				<td><canvas id="mycanvas" width="400" height="100"></canvas></td>
 			</tr>
 		</table>
 
@@ -483,14 +502,14 @@
 					"sketch.ino" : $("#textarea_arduino").val()
 				}
 			}
-			
-			$(document).ready(function(){
-            	compilerflasher = new compilerflasher(getFiles); 
-        	});
-        	function serialRead(){         					
-				document.getElementById('serialTest').value= compilerflasher.comparePluginVersions(2,1);
-			}
 
+
+			$(document).ready(function() {
+				compilerflasher = new compilerflasher(getFiles);
+			});
+			function serialRead() {
+				document.getElementById('serialTest').value = compilerflasher.comparePluginVersions(2, 1);
+			}
 
 		</script>
 	</body>
