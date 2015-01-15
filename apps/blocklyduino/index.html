@@ -69,7 +69,7 @@
 			function blinkload() {
 				var str = '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="inout_digital_write" x="106" y="53"><title name="PIN">13</title><title name="STAT">HIGH</title><next><block type="base_delay" inline="true"><value name="DELAY_TIME"><block type="math_number"><title name="NUM">1000</title></block></value><next><block type="inout_digital_write"><title name="PIN">13</title><title name="STAT">LOW</title><next><block type="base_delay" inline="true"><value name="DELAY_TIME"><block type="math_number"><title name="NUM">1000</title></block></value></block></next></block></next></block></next></block></xml>';
 				document.getElementById('blinkload').style.border = ' 1px solid darkGray';
-				//document.getElementById('arduinoCode').style.border = ' 3px solid darkblue';
+				document.getElementById('arduinoCode').style.border = ' 3px solid darkblue';
 				var xml = Blockly.Xml.textToDom(str);
 				Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
 				document.getElementById('blinkload').value = '';
@@ -85,8 +85,6 @@
 			}
 
 			function arduinoCode() {
-				document.getElementById('arduinoCode').style.border = ' 1px solid darkGray';
-				//document.getElementById('cb_cf_flash_btn').style.border = ' 3px solid darkblue';
 				var arduinoTextarea = document.getElementById('textarea_arduino');
 				arduinoTextarea.value = Blockly.Generator.workspaceToCode('Arduino');
 				arduinoTextarea.focus();
@@ -139,10 +137,9 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<style>
 			body {
-				/*background-color: Lavender;
-				 background-image: url(http://www.transparenttextures.com/patterns/cardboard.png);*/
-				background-image: url("media/CamoBG.png");
-				background-size: cover;
+
+				background-size: 400px 400px;
+				background-repeat: repeat;
 				font-family: sans-serif;
 				margin: 0;
 				padding: 0;
@@ -168,23 +165,20 @@
 			/* Tabs */
 			#tabRow > td {
 				border: none;
-				position: absolute;
-				margin-right: 10%;
-				margin-top: 3%;
-				right: 0;
 			}
+
 			td.tabon {
-				border-bottom-color: #ddd !important;
-				background-color: Lavender;
+				/*border-bottom-color: #ddd !important;
+				 background-color: Lavender;*/
 				padding: 5px 19px;
 			}
 			td.taboff {
 				cursor: pointer;
-				background-color: Lavender;
-				padding: 5px 19px;
+				/*background-color: Lavender;*/
+				/*padding: 5px 19px;*/
 			}
 			td.taboff:hover {
-				background-color: Lavender;
+				/*background-color: Lavender;*/
 			}
 			td.tabmin {
 				border-top-style: none !important;
@@ -223,23 +217,19 @@
 				src: url("fonts/playtime.ttf");
 			}
 			#content_arduino {
-				height: 83%;
-				width: 98%;
-				margin: 14% 1% 1% 1%;
+				height: 80%;
+				width: 80%;
+				margin: 10% 10% 10% 10%;
 				bottom: 0;
-				border-top-style: none;
 				overflow: hidden;
 				font-family: Playtime;
 				padding-left: 10px;
 				font-size: 20px;
-				background-color: #edc951;
-				background-image: url(http://www.transparenttextures.com/patterns/white-brushed.png);
-				/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-
-				border-top: 1px solid #EDC951;
-				border-bottom: 1px solid #EDC951;
+				background-color: #EEEEEE;
 				z-index: 2;
+				border: 10px solid #401800;
 			}
+
 			#textarea_xml, #textarea_arduino {
 				width: 100%;
 				height: 100%;
@@ -251,54 +241,97 @@
 			}
 
 			#rightPage {
-				width: 49.5%;
+				width: 45%;
 				height: 100%;
-				background-color: #00A0B0;
-				/*background-color: transparent;*/
+				background-color: transparent;
 				margin-right: 0.5%;
 				float: right;
 				z-index: 999;
 			}
 			#leftPage {
-				/*background-color: #f9f1d5;*/
 				background-color: transparent;
 				height: 100%;
-				width: 49.5%;
+				width: 45%;
 				float: left;
 				margin-left: 0.5%;
-				/*background-image: url(http://www.transparenttextures.com/patterns/cardboard.png);*/
 			}
 
 			iframe {
-				width: 98%;
-				height: 98%;
-				margin: 1% 1% 1% 1%;
+				width: 80%;
+				height: 80%;
+				margin: 10% 10% 10% 10%;
 				background: transparent;
-				border: 2px solid #EDC951;
+				border: 10px solid #000040;
 				float: right;
 			}
 
-			#arduinoCode{
-				background-color: #EB6841;
-				border: 2px solid white;
-				color: white;
-				font-size: 1.5em;
+			#arduinoCode {
+				background: url("media/icons/ArduinoWrite.svg");
+				background-size: 100%;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 2em;
+			}
+
+			#cb_cf_verify_btn {
+				background: url("media/icons/Compile.svg");
+				background-size: 100%;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 8em;
+			}
+
+			#cb_cf_flash_btn {
+				background: url("media/icons/Upload.svg");
+				background-size: 100%;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 14em;
+			}
+
+			#cb_cf_serial_monitor_connect {
+				background: url("media/icons/SerialMonitor.svg");
+				background-size: 100%;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 20em;
+			}
+
+			.columnIcon {
+				width: 125px;
+				height: 125px;
+				display: block;
+				border: none;
 			}
 
 			button {
 				padding: 1px 1em;
-				/*font-size: 90%;*/
-				/*border: none;*/
-				/*background-color: Lavender;*/
-				/*color: slategrey;*/
 				background-color: #EB6841;
-				border: 2px solid white;
+				/*border: 2px solid white;*/
+				border: none;
 				color: white;
 				font-size: 1.5em;
 			}
 
 			button.launch {
-				border: 1px solid #d43;
+				/*border: 1px solid #d43;*/
+				border: none;
 				background-color: #d43;
 				color: white;
 			}
@@ -307,43 +340,44 @@
 				border: none;
 			}
 			button:hover {
-				box-shadow: 2px -2px 2px #888;
+				/*box-shadow: 2px -2px 2px #888;*/
 				z-index: 1;
 			}
 			#sample-button, #tutorial {
-				border: 3px solid darkblue;
+				/*border: 3px solid darkblue;*/
+				border: none;
 			}
 
-			#spine {
-				height: 60%;
-				width: 100px;
-				background-size: 100%;
-				background-repeat: repeat-y;
+			#leftBG {
 				position: absolute;
-				top: 12%;
-				margin-left: auto;
-				margin-right: auto;
+				width: 49.8%;
+				height: 100%;
 				left: 0;
+				background-color: blue;
+				z-index: -5;
+				background-image: url(http://www.transparenttextures.com/patterns/shattered.png);
+				/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+			}
+			#rightBG {
+				position: absolute;
+				width: 49.8%;
+				height: 100%;
 				right: 0;
+				background-color: #ff6000;
+				z-index: -5;
+				background-image: url(http://www.transparenttextures.com/patterns/shattered.png);
+				/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 			}
 
-			#debug {
-				width: 100%;
-				height: 100px;
-				background-color: gray;
-				opacity: 0.8;
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				margin-left: 0;
-				margin-right: 0;
+			#tab_blocks, #tab_xml {
+				visibility: hidden;
 			}
 
 		</style>
 	</head>
 	<body>
-
+		<div id="leftBG"></div>
+		<div id="rightBG"></div>
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -425,75 +459,76 @@
 
 		<table height="100%" width="100%">
 			<tr>
-				<td><!-- <a href="http://soapboxrobotics.com"><img src="http://i.imgur.com/3mu5v71.png" style="width:125px;height:75px" border="1" alt="Soapbox Robotics"></a> -->
-				<button id="blinkload" onclick="blinkload()">
-					Blink!
-					<button id="serialReadload" onclick="serialReadload()">
-						Serial Read!
-					</button><!--<button id="tutorial" data-toggle="modal" data-target="#myModal">
-					Tutorial
-					</button></td> -->
+				<td><!-- <a href="http://soapboxrobotics.com"><img src="http://i.imgur.com/3mu5v71.png" style="width:125px;height:75px" border="1" alt="Soapbox Robotics"></a> --><!--<button id="blinkload" onclick="blinkload()">
+				Blink!
+				</button>
+				<button id="serialReadload" onclick="serialReadload()">
+				Serial Read!
+				</button><button id="tutorial" data-toggle="modal" data-target="#myModal">
+				Tutorial
+				</button></td> -->
 			</tr>
 			<td>
 			<table>
-				<tr id="tabRow" height="1em">
-					<td id="tab_blocks" class="taboff" onclick="tabClick(this.id)">Blockly</td>
-					<td id="tab_xml" class="taboff" onclick="tabClick(this.id)">XML</td>
-					<td class="tabmin"><span style="padding-left:470px;"></span>
-					<button id="arduinoCode" onclick="arduinoCode()">
-						Arduino
+				<!--<tr id="tabColumn" height="1em">-->
+				<tr id="tabRow">
+					<td id="tab_blocks" class="taboff"  onclick="tabClick(this.id)">Blockly</td>
+					<td id="tab_xml" class="taboff"  onclick="tabClick(this.id)">XML</td>
+
+					<td class="tabmin"><!-- <span style="padding-left:470px;"></span> -->
+					<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()">
+						<!-- Arduino -->
 					</button><!-- Button trigger modal -->
-					<button onclick="discard()">
-						Discard
+					<button class="columnIcon" id="cb_cf_verify_btn">
+						<!-- Compile the Code! -->
+					</button><!-- <select id="cb_cf_ports"></select> -->
+					<button class="columnIcon" id="cb_cf_flash_btn" onclick="compileFlash()">
+						<!-- Compile and Flash! -->
+					</button><!-- <select id="cb_cf_boards"></select><select id="cb_cf_baud_rates"></select><p id="cb_cf_operation_output"></p> --></td>
+					<button class="columnIcon" id="cb_cf_serial_monitor_connect">
+						<!-- Open Serial Monitor -->
 					</button>
-					<button onclick="save()">
-						Save
-					</button>
-					<button id="fakeload">
-						Load
-					</button>
-					<input type="file" id="load" style="display: none;"/>
-					</td>
-			</table></td>
-			</tr>
-			<tr >
-				<td height="100%"><div id="spine"></div>
-				<div id="leftPage">
-					<iframe id="content_blocks" src="frame.html" align="left"></iframe>
+
+			</td>
+		</table></td>
+		</tr>
+		<tr >
+			<div id="leftPage">
+				<iframe id="content_blocks" src="frame.html" align="left"></iframe>
+			</div>
+			<div id="rightPage">
+				<div id="content_arduino">
+					<textarea id="textarea_arduino"></textarea>
 				</div>
-				<div id="rightPage">
-					<div id="content_arduino">
-						<textarea id="textarea_arduino"></textarea>
-					</div>
-				</div>
-				<div id="content_xml">
-					<textarea id="textarea_xml" readonly></textarea>
-				</div></td>
-			</tr>
-			<tr>
-				<td>
-				<button id="cb_cf_verify_btn">
-					Compile the Code!
-				</button><select id="cb_cf_ports"></select>
-				<button id="cb_cf_flash_btn" onclick="compileFlash()">
-					Compile and Flash!
-				</button><select id="cb_cf_boards"></select><select id="cb_cf_baud_rates"></select><p id="cb_cf_operation_output"></p></td>
-			</tr>
-			<tr>
-				<td>
-				<button id="cb_cf_serial_monitor_connect">
-					Open Serial Monitor
-				</button></td>
-			</tr>
-			<tr>
-				<td>
-				<div id="serialTest">
-					<textarea id="textarea_serialTest"></textarea>
-				</div></td>
-			</tr>
-			<tr>
-				<td><canvas id="mycanvas" width="400" height="100"></canvas></td>
-			</tr>
+			</div>
+			<div id="content_xml">
+				<textarea id="textarea_xml" readonly></textarea>
+			</div></td>
+		</tr>
+		<tr>
+			<td style="visibility: hidden">
+			<button id="discard" onclick="discard()">
+				Discard
+			</button>
+			<button  id="save" onclick="save()">
+				Save
+			</button>
+			<button id="load" id="fakeload">
+				Load
+			</button>
+			<input type="file" id="load" style="display: none;"/>
+		</tr>
+		<tr>
+			<td></td>
+		</tr>
+		<tr>
+			<td><!-- <div id="serialTest">
+			<textarea id="textarea_serialTest"></textarea>
+			</div></td> -->
+		</tr>
+		<tr>
+			<!-- <td><canvas id="mycanvas" width="400" height="100"></canvas></td> -->
+		</tr>
 		</table>
 
 		<script type="text/javascript">
