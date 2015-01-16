@@ -99,7 +99,7 @@
 
 			function compileFlash() {
 				document.getElementById('cb_cf_flash_btn').style.border = ' 1px solid darkGray';
-				
+
 			}
 
 			/**
@@ -342,7 +342,6 @@
 			}
 			button:hover {
 				/*box-shadow: 2px -2px 2px #888;*/
-				z-index: 1;
 			}
 			#sample-button, #tutorial {
 				/*border: 3px solid darkblue;*/
@@ -374,104 +373,184 @@
 				visibility: hidden;
 			}
 
+			#drawer {
+				position: absolute;
+				top: -300px;
+				width: 100%;
+				height: 300px;
+				opacity: 0.8;
+				background-color: black;
+				z-index: 9999;
+			}
+
+			#save {
+				width: 100px;
+				height: 100px;
+				background: transparent url("media/icons/Save.svg");
+				z-index: 999999;
+			}
+
+			#load {
+				width: 100px;
+				height: 100px;
+				background: transparent url("media/icons/Load.svg");
+				z-index: 999999;
+			}
+
+			#discard {
+				width: 100px;
+				height: 100px;
+				background: transparent url("media/icons/Discard.svg");
+			}
+
+			.drawerButton {
+				z-index: 99999;
+				margin-left: 50px;
+			}
+
+			.drawerButton:hover {
+				background-color: black;
+			}
+
+			#drawer button:first-child {
+				margin-left: 200px;
+			}
+
+			.drawerToggle {
+				width: 50px;
+				height: 50px;
+				top: 0;
+				background: transparent url("media/icons/Drawer.svg");
+				background-size: 100%;
+				left: 30px;
+				position: absolute;
+			}
+
 		</style>
 	</head>
 	<body>
 		<div id="leftBG"></div>
 		<div id="rightBG"></div>
+		<div id="drawer">
+			<div id="settingsDrawer" style="border-bottom: 2px solid grey; height: 100px;">
+
+			</div>
+			<div id="fileDrawer" style="border-bottom: 2px solid grey; height: 100px; ">
+				<tr >
+					<td>
+					<button  id="save" class="drawerButton" onclick="save()">
+						<!-- Save -->
+					</button></td>
+					<td>
+					<button id="load" class="drawerButton" id="fakeload" >
+						<!-- Load -->
+					</button></td>
+
+					<td>
+					<button id="discard" class="drawerButton" onclick="discard()">
+						<!-- Discard -->
+					</button></td>
+					<input type="file" id="load" style="display: none;"/>
+				</tr>
+			</div>
+			<div id="examplesDrawer">
+
+			</div>
+
+		</div>
+		<div  class="drawerToggle drawerClosed"></div>
 		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-						</button>
-						<h4 class="modal-title" id="myModalLabel">Step 1</h4>
-					</div>
-					<div class="modal-body">
-						Blockly Drag & Drop
-						<button id="sample-button">
-							Sample
-						</button>
-					</div>
-					<div class="modal-footer">
-						<button type="button" data-toggle="modal" data-dismiss="modal" data-target="#myModal2">
-							Next
-						</button>
-					</div>
-				</div>
-			</div>
+		<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">
+		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+		</button>
+		<h4 class="modal-title" id="myModalLabel">Step 1</h4>
 		</div>
+		<div class="modal-body">
+		Blockly Drag & Drop
+		<button id="sample-button">
+		Sample
+		</button>
+		</div>
+		<div class="modal-footer">
+		<button type="button" data-toggle="modal" data-dismiss="modal" data-target="#myModal2">
+		Next
+		</button>
+		</div>
+		</div>
+		</div>
+		</div> -->
 
-		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-						</button>
-						<h4 class="modal-title" id="myModalLabel2">Step 2</h4>
-					</div>
-					<div class="modal-body">
-						Generate Arduino Code
-						<button id="sample-button">
-							Sample
-						</button>
-					</div>
-					<div class="modal-footer">
-						<button type="button" data-toggle="modal" data-dismiss="modal" data-target="#myModal">
-							Back
-						</button>
-						<button type="button" data-toggle="modal" data-dismiss="modal" data-target="#myModal3">
-							Next
-						</button>
-					</div>
-				</div>
-			</div>
+		<!-- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">
+		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+		</button>
+		<h4 class="modal-title" id="myModalLabel2">Step 2</h4>
 		</div>
+		<div class="modal-body">
+		Generate Arduino Code
+		<button id="sample-button">
+		Sample
+		</button>
+		</div>
+		<div class="modal-footer">
+		<button type="button" data-toggle="modal" data-dismiss="modal" data-target="#myModal">
+		Back
+		</button>
+		<button type="button" data-toggle="modal" data-dismiss="modal" data-target="#myModal3">
+		Next
+		</button>
+		</div>
+		</div>
+		</div>
+		</div> -->
 
-		<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-						</button>
-						<h4 class="modal-title" id="myModalLabel3">Step 3</h4>
-					</div>
-					<div class="modal-body">
-						Compile & Flash
-						<button id="sample-button">
-							Sample
-						</button>
-					</div>
-					<div class="modal-footer">
-						<button type="button" data-toggle="modal" data-dismiss="modal" data-target="#myModal2">
-							Back
-						</button>
-						<button type="button" data-dismiss="modal" onclick="closeTutorial()">
-							Close
-						</button>
-					</div>
-				</div>
-			</div>
+		<!-- <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">
+		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+		</button>
+		<h4 class="modal-title" id="myModalLabel3">Step 3</h4>
 		</div>
+		<div class="modal-body">
+		Compile & Flash
+		<button id="sample-button">
+		Sample
+		</button>
+		</div>
+		<div class="modal-footer">
+		<button type="button" data-toggle="modal" data-dismiss="modal" data-target="#myModal2">
+		Back
+		</button>
+		<button type="button" data-dismiss="modal" onclick="closeTutorial()">
+		Close
+		</button>
+		</div>
+		</div>
+		</div>
+		</div> -->
 
 		<table height="100%" width="100%">
-			<tr>
-				<td><!-- <a href="http://soapboxrobotics.com"><img src="http://i.imgur.com/3mu5v71.png" style="width:125px;height:75px" border="1" alt="Soapbox Robotics"></a> --><!--<button id="blinkload" onclick="blinkload()">
-				Blink!
-				</button>
-				<button id="serialReadload" onclick="serialReadload()">
-				Serial Read!
-				</button><button id="tutorial" data-toggle="modal" data-target="#myModal">
-				Tutorial
-				</button></td> -->
-			</tr>
+			<!-- <tr>
+			<td><!-- <a href="http://soapboxrobotics.com"><img src="http://i.imgur.com/3mu5v71.png" style="width:125px;height:75px" border="1" alt="Soapbox Robotics"></a> --><!--<button id="blinkload" onclick="blinkload()">
+			Blink!
+			</button>
+			<button id="serialReadload" onclick="serialReadload()">
+			Serial Read!
+			</button><button id="tutorial" data-toggle="modal" data-target="#myModal">
+			Tutorial
+			</button></td>
+			</tr> -->
 			<td>
 			<table>
-				<!--<tr id="tabColumn" height="1em">-->
 				<tr id="tabRow">
 					<td id="tab_blocks" class="taboff"  onclick="tabClick(this.id)">Blockly</td>
 					<td id="tab_xml" class="taboff"  onclick="tabClick(this.id)">XML</td>
@@ -506,22 +585,7 @@
 				<textarea id="textarea_xml" readonly></textarea>
 			</div></td>
 		</tr>
-		<tr>
-			<td style="visibility: hidden">
-			<button id="discard" onclick="discard()">
-				Discard
-			</button>
-			<button  id="save" onclick="save()">
-				Save
-			</button>
-			<button id="load" id="fakeload">
-				Load
-			</button>
-			<input type="file" id="load" style="display: none;"/>
-		</tr>
-		<tr>
-			<td></td>
-		</tr>
+
 		<tr>
 			<td><!-- <div id="serialTest">
 			<textarea id="textarea_serialTest"></textarea>
@@ -542,7 +606,30 @@
 
 			$(document).ready(function() {
 				compilerflasher = new compilerflasher(getFiles);
+
+				$('.drawerToggle').click(function() {
+					if ($(this).hasClass('drawerClosed')) {
+						$('#drawer').animate({
+							top : "0px"
+						}, 500);
+						$('.drawerToggle').animate({
+							top : "+=300px"
+						}, 500);
+						$(this).addClass('drawerOpened');
+						$(this).removeClass('drawerClosed');
+					} else {
+						$('#drawer').animate({
+							top : "-300px"
+						}, 500);
+						$('.drawerToggle').animate({
+							top : "0px"
+						}, 500);
+						$(this).addClass('drawerClosed');
+						$(this).removeClass('drawerOpened');
+					}
+				});
 			});
+
 			function serialRead() {
 				document.getElementById('serialTest').value = compilerflasher.comparePluginVersions(2, 1);
 			}

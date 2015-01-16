@@ -19,10 +19,10 @@
    enable-background="new 0 0 100 100"
    xml:space="preserve"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="floppy13.svg"><metadata
+   sodipodi:docname="Save.svg"><metadata
    id="metadata5110"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
    id="defs5108" /><sodipodi:namedview
    pagecolor="#ffffff"
    bordercolor="#666666"
@@ -41,21 +41,21 @@
    fit-margin-right="0"
    fit-margin-bottom="0"
    inkscape:zoom="2.36"
-   inkscape:cx="-15.677966"
-   inkscape:cy="50.423729"
+   inkscape:cx="-7.2669496"
+   inkscape:cy="59.682201"
    inkscape:window-x="-8"
    inkscape:window-y="-8"
    inkscape:window-maximized="1"
    inkscape:current-layer="Layer_1" />
-<path
-   d="M 89.585748,7.5 H 10.414252 c -1.6086671,0 -2.9142522,1.305585 -2.9142522,2.914253 v 79.171495 c 0,1.608668 1.3055851,2.914252 2.9142522,2.914252 H 89.585748 C 91.194415,92.5 92.5,91.194416 92.5,89.585748 V 10.414253 C 92.5,8.805585 91.194415,7.5 89.585748,7.5 z m -65.81402,4.372836 H 76.228272 V 36.400641 H 23.771728 V 11.872836 z M 78.7797,86.307214 H 21.223214 V 50 H 78.7797 V 86.307214 z M 61.415126,15.515651 h 7.287088 V 33.002623 H 61.415126 V 15.515651 z M 73.496159,58.986097 H 26.50384 v -2.914252 h 46.992319 v 2.914252 z m 0,10.199884 H 26.50384 v -2.914253 h 46.992319 v 2.914253 z m 0,9.835602 H 26.50384 V 76.10733 h 46.992319 v 2.914253 z"
-   id="path5104"
-   inkscape:connector-curvature="0"
-   style="fill:#ffffff;fill-opacity:1" />
 <rect
    style="fill:#ffffff;fill-opacity:0;stroke:none"
-   id="rect5112"
+   id="rect5622"
    width="100"
    height="100"
    x="0"
-   y="0" /></svg>
+   y="0" /><path
+   d="M 82.600028,15.000001 H 17.399973 C 16.075188,15.000001 15,16.075188 15,17.399974 v 65.200055 c 0,1.324786 1.075188,2.39997 2.399973,2.39997 H 82.600028 C 83.924813,84.999999 85,83.924815 85,82.600029 V 17.399974 c 0,-1.324786 -1.075187,-2.399973 -2.399972,-2.399973 z M 28.400247,18.60116 H 71.599754 V 38.800529 H 28.400247 V 18.60116 z M 73.70093,79.90006 H 26.30147 V 50.000001 H 73.70093 V 79.90006 z M 59.400692,21.601126 h 6.001132 V 36.002161 H 59.400692 V 21.601126 z m 9.949086,35.799191 H 30.650221 v -2.399973 h 38.699557 v 2.399973 z m 0,8.399904 H 30.650221 v -2.399973 h 38.699557 v 2.399973 z m 0,8.099908 H 30.650221 v -2.399973 h 38.699557 v 2.399973 z"
+   id="path5104"
+   inkscape:connector-curvature="0"
+   style="fill:#f0f0f0;fill-opacity:1" />
+</svg>
