@@ -137,13 +137,10 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<style>
 			body {
-
-				background-size: 400px 400px;
-				background-repeat: repeat;
 				font-family: sans-serif;
 				margin: 0;
 				padding: 0;
-				overflow-x: hidden;
+				overflow: hidden;
 			}
 			.blocklySvg {
 				height: 100%;
@@ -210,7 +207,7 @@
 				margin: 0;
 				border-top-style: none;
 				overflow: hidden;
-				float: left;
+				/*float: left;*/
 				display: hidden;
 			}
 			@font-face {
@@ -263,7 +260,7 @@
 				margin: 10% 10% 10% 10%;
 				background: transparent;
 				border: 10px solid #000040;
-				float: right;
+				/*float: right;*/
 			}
 
 			#arduinoCode {
@@ -416,6 +413,27 @@
 				margin-left: 200px;
 			}
 
+			#drawer select:first-child {
+				margin-left: 210px;
+			}
+			@font-face {
+				font-family: Roboto-Regular;
+				src: url("fonts/Roboto-Regular.ttf");
+			}
+			select {
+				margin-top: 40px;
+				margin-left: 80px;
+				color: white;
+				background-color: black;
+				border: 1px solid darkgrey;
+				font-size: 1.5em;
+				font-family: Roboto-Regular;
+			}
+
+			select: nth-child(2) {
+				width: 300px;
+			}
+
 			.drawerToggle {
 				width: 50px;
 				height: 50px;
@@ -425,6 +443,15 @@
 				left: 30px;
 				position: absolute;
 			}
+			
+			#file{
+				width:100px;
+				height: 100px;
+				background: transparent url("media/icons/FileIcon.svg");
+				background-size: 100%;
+				display: inline;
+				margin-left: 100px;
+			}
 
 		</style>
 	</head>
@@ -433,10 +460,14 @@
 		<div id="rightBG"></div>
 		<div id="drawer">
 			<div id="settingsDrawer" style="border-bottom: 2px solid grey; height: 100px;">
-
+				<select id="cb_cf_ports"></select>
+				<select id="cb_cf_boards"></select>
 			</div>
 			<div id="fileDrawer" style="border-bottom: 2px solid grey; height: 100px; ">
-				<tr >
+
+				<tr style="display:inline-block">
+					<td> 
+					</td>
 					<td>
 					<button  id="save" class="drawerButton" onclick="save()">
 						<!-- Save -->
@@ -452,13 +483,14 @@
 					</button></td>
 					<input type="file" id="load" style="display: none;"/>
 				</tr>
+				
 			</div>
 			<div id="examplesDrawer">
 
 			</div>
 
 		</div>
-		<div  class="drawerToggle drawerClosed"></div>
+		<button  class="drawerToggle drawerClosed"></button>
 		<!-- Modal -->
 		<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -564,7 +596,7 @@
 					</button><!-- <select id="cb_cf_ports"></select> -->
 					<button class="columnIcon" id="cb_cf_flash_btn" onclick="compileFlash()">
 						<!-- Compile and Flash! -->
-					</button><!-- <select id="cb_cf_boards"></select><select id="cb_cf_baud_rates"></select><p id="cb_cf_operation_output"></p> --></td>
+					</button><!-- <select id="cb_cf_baud_rates"></select><p id="cb_cf_operation_output"></p> --></td>
 					<button class="columnIcon" id="cb_cf_serial_monitor_connect">
 						<!-- Open Serial Monitor -->
 					</button>
