@@ -211,19 +211,27 @@
 				display: hidden;
 			}
 			@font-face {
-				font-family: Playtime;
-				src: url("fonts/playtime.ttf");
+				font-family: Roboto-Regular;
+				src: url("fonts/Roboto-Regular.ttf");
 			}
+			/*@font-face {
+			 font-family: Playtime;
+			 src: url("fonts/playtime.ttf");
+			 }*/
 			#content_arduino {
 				height: 80%;
-				width: 80%;
-				margin: 10% 10% 10% 10%;
+				width: 90%;
+				margin: 1% 5% 10% 5%;
 				bottom: 0;
 				overflow: hidden;
-				font-family: Playtime;
+				font-family: Courier, Roboto-Regular;
+				font-weight: bold;
 				padding-left: 10px;
-				font-size: 20px;
-				background-color: #EEEEEE;
+				color: #333333;
+				font-size: 1em;
+				background-color: #fefefe;
+				background-image: url("media/ArduinoWallpaper.png");
+				background-size: 100%;
 				z-index: 2;
 				border: 10px solid #401800;
 			}
@@ -255,9 +263,9 @@
 			}
 
 			iframe {
-				width: 80%;
+				width: 90%;
 				height: 80%;
-				margin: 10% 10% 10% 10%;
+				margin: 1% 5% 10% 5%;
 				background: transparent;
 				border: 10px solid #000040;
 				/*float: right;*/
@@ -267,53 +275,62 @@
 				background: url("media/icons/ArduinoWrite.svg");
 				background-size: 100%;
 				position: absolute;
+				background-repeat: no-repeat;
 				left: 0;
 				right: 0;
 				top: 0;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 2em;
+				margin-top: 4%;
 			}
 
 			#cb_cf_verify_btn {
 				background: url("media/icons/Compile.svg");
 				background-size: 100%;
 				position: absolute;
+				background-repeat: no-repeat;
 				left: 0;
 				right: 0;
 				top: 0;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 8em;
+				/*margin-top: 8em;*/
+				margin-top: 12%;
 			}
 
 			#cb_cf_flash_btn {
 				background: url("media/icons/Upload.svg");
 				background-size: 100%;
+				background-repeat: no-repeat;
 				position: absolute;
 				left: 0;
 				right: 0;
 				top: 0;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 14em;
+				margin-top: 20%;
 			}
 
 			#cb_cf_serial_monitor_connect {
 				background: url("media/icons/SerialMonitor.svg");
 				background-size: 100%;
+				background-repeat: no-repeat;
 				position: absolute;
 				left: 0;
 				right: 0;
 				top: 0;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 20em;
+				/*margin-top: 20em;*/
+				margin-top: 28%;
 			}
 
 			.columnIcon {
-				width: 125px;
-				height: 125px;
+				/*width: 125px;
+				 height: 125px;*/
+
+				width: 7%;
+				height: 12%;
 				display: block;
 				border: none;
 			}
@@ -373,8 +390,10 @@
 			#drawer {
 				position: absolute;
 				top: -300px;
+
 				width: 100%;
 				height: 300px;
+
 				opacity: 0.8;
 				background-color: black;
 				z-index: 9999;
@@ -387,7 +406,7 @@
 				z-index: 999999;
 			}
 
-			#load {
+			#fakeload {
 				width: 100px;
 				height: 100px;
 				background: transparent url("media/icons/Load.svg");
@@ -416,10 +435,7 @@
 			#drawer select:first-child {
 				margin-left: 210px;
 			}
-			@font-face {
-				font-family: Roboto-Regular;
-				src: url("fonts/Roboto-Regular.ttf");
-			}
+
 			select {
 				margin-top: 40px;
 				margin-left: 80px;
@@ -443,15 +459,63 @@
 				left: 30px;
 				position: absolute;
 			}
-			
-			#file{
-				width:100px;
+
+			#file {
+				width: 100px;
 				height: 100px;
 				background: transparent url("media/icons/FileIcon.svg");
 				background-size: 100%;
 				display: inline;
 				margin-left: 100px;
 			}
+
+			#homeLink {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin-left: auto;
+				margin-right: auto;
+				background-image: url("media/homeLink.svg");
+				background-size: 100% 100%;
+				height: 150px;
+				width: 150px;
+				background-color: transparent;
+			}
+
+			#navBarBG {
+				width: 100%;
+				height: 90px;
+				position: fixed;
+				bottom: 1%;
+				background-color: #eeeeee;
+				opacity: 0.8;
+			}
+
+			.navButton {
+				position: static;
+				width: 20%;
+				margin-left: 3.9%;
+				height: 100%;
+				text-align: center;
+				color: black;
+				font-family: Roboto-Regular;
+				display: inline-block;
+				font-weight: 900;
+				font-size: 2em;
+				padding-top: 28px;
+				padding-bottom: 28px;
+				
+			}
+		.navButton:hover{
+			background-color: black;
+		}
+		
+		a:hover{
+			text-decoration: none;
+			color: lightgrey;
+			opacity: 1;
+		}
 
 		</style>
 	</head>
@@ -466,14 +530,13 @@
 			<div id="fileDrawer" style="border-bottom: 2px solid grey; height: 100px; ">
 
 				<tr style="display:inline-block">
-					<td> 
-					</td>
+					<td></td>
 					<td>
 					<button  id="save" class="drawerButton" onclick="save()">
 						<!-- Save -->
 					</button></td>
 					<td>
-					<button id="load" class="drawerButton" id="fakeload" >
+					<button class="drawerButton" id="fakeload" >
 						<!-- Load -->
 					</button></td>
 
@@ -483,14 +546,27 @@
 					</button></td>
 					<input type="file" id="load" style="display: none;"/>
 				</tr>
-				
+
 			</div>
 			<div id="examplesDrawer">
 
 			</div>
 
 		</div>
+
+		<div class="navBar">
+			<div id="navBarBG">
+				<tr>
+					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Blog</a></td>
+					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Projects</a></td>
+					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Compiler</a></td>
+					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we"class="navButton">About Us</a></td>
+				</tr>
+			</div>
+			<a href="http://www.soapboxrobotics.com/" id="homeLink"></a>
+		</div>
 		<button  class="drawerToggle drawerClosed"></button>
+
 		<!-- Modal -->
 		<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
