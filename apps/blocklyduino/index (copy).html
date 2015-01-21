@@ -2,13 +2,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Blockly Demo: Arduino</title>
-		<!--script type="text/javascript" src="../blockly_compressed.js"></script-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript" src="Blob.js"></script>
 		<script type="text/javascript" src="FileSaver.min.js"></script>
 		<script type="text/javascript" src="blockly_helper.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="compilerflasher.js" type="text/javascript"></script>
+		<script src="js/compilerflasher.js" type="text/javascript"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="smoothie.js"></script>
 
@@ -211,24 +210,19 @@
 				display: hidden;
 			}
 			@font-face {
-				font-family: Roboto-Regular;
-				src: url("fonts/Roboto-Regular.ttf");
+				font-family: Playtime;
+				src: url("fonts/playtime.ttf");
 			}
-
 			#content_arduino {
 				height: 80%;
-				width: 90%;
-				margin: 1% 5% 10% 5%;
+				width: 80%;
+				margin: 10% 10% 10% 10%;
 				bottom: 0;
 				overflow: hidden;
-				font-family: Courier, Roboto-Regular;
-				font-weight: bold;
+				font-family: Playtime;
 				padding-left: 10px;
-				color: #333333;
-				font-size: 1em;
-				background-color: #fefefe;
-				background-image: url("media/ArduinoWallpaper.png");
-				background-size: 100%;
+				font-size: 20px;
+				background-color: #EEEEEE;
 				z-index: 2;
 				border: 10px solid #401800;
 			}
@@ -260,9 +254,9 @@
 			}
 
 			iframe {
-				width: 90%;
+				width: 80%;
 				height: 80%;
-				margin: 1% 5% 10% 5%;
+				margin: 10% 10% 10% 10%;
 				background: transparent;
 				border: 10px solid #000040;
 				/*float: right;*/
@@ -272,62 +266,53 @@
 				background: url("media/icons/ArduinoWrite.svg");
 				background-size: 100%;
 				position: absolute;
-				background-repeat: no-repeat;
 				left: 0;
 				right: 0;
 				top: 0;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 4%;
+				margin-top: 2em;
 			}
 
 			#cb_cf_verify_btn {
 				background: url("media/icons/Compile.svg");
 				background-size: 100%;
 				position: absolute;
-				background-repeat: no-repeat;
 				left: 0;
 				right: 0;
 				top: 0;
 				margin-left: auto;
 				margin-right: auto;
-				/*margin-top: 8em;*/
-				margin-top: 12%;
+				margin-top: 8em;
 			}
 
 			#cb_cf_flash_btn {
 				background: url("media/icons/Upload.svg");
 				background-size: 100%;
-				background-repeat: no-repeat;
 				position: absolute;
 				left: 0;
 				right: 0;
 				top: 0;
 				margin-left: auto;
 				margin-right: auto;
-				margin-top: 20%;
+				margin-top: 14em;
 			}
 
 			#cb_cf_serial_monitor_connect {
 				background: url("media/icons/SerialMonitor.svg");
 				background-size: 100%;
-				background-repeat: no-repeat;
 				position: absolute;
 				left: 0;
 				right: 0;
 				top: 0;
 				margin-left: auto;
 				margin-right: auto;
-				/*margin-top: 20em;*/
-				margin-top: 28%;
+				margin-top: 20em;
 			}
 
 			.columnIcon {
-				/*width: 125px;
-				 height: 125px;*/
-
-				width: 7%;
-				height: 12%;
+				width: 125px;
+				height: 125px;
 				display: block;
 				border: none;
 			}
@@ -430,7 +415,10 @@
 			#drawer select:first-child {
 				margin-left: 210px;
 			}
-
+			@font-face {
+				font-family: Roboto-Regular;
+				src: url("fonts/Roboto-Regular.ttf");
+			}
 			select {
 				margin-top: 40px;
 				margin-left: 80px;
@@ -454,61 +442,14 @@
 				left: 30px;
 				position: absolute;
 			}
-
-			#file {
-				width: 100px;
+			
+			#file{
+				width:100px;
 				height: 100px;
 				background: transparent url("media/icons/FileIcon.svg");
 				background-size: 100%;
 				display: inline;
 				margin-left: 100px;
-			}
-
-			#homeLink {
-				position: fixed;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				margin-left: auto;
-				margin-right: auto;
-				background-image: url("media/homeLink.svg");
-				background-size: 100% 100%;
-				height: 150px;
-				width: 150px;
-				background-color: transparent;
-			}
-
-			#navBarBG {
-				width: 100%;
-				height: 90px;
-				position: fixed;
-				bottom: 1%;
-				background-color: #eeeeee;
-				opacity: 0.8;
-			}
-
-			.navButton {
-				position: static;
-				width: 20%;
-				margin-left: 3.9%;
-				height: 100%;
-				text-align: center;
-				color: black;
-				font-family: Roboto-Regular;
-				display: inline-block;
-				font-weight: 900;
-				font-size: 2em;
-				padding-top: 28px;
-				padding-bottom: 28px;
-			}
-			.navButton:hover {
-				background-color: black;
-			}
-
-			a:hover {
-				text-decoration: none;
-				color: lightgrey;
-				opacity: 1;
 			}
 
 		</style>
@@ -525,43 +466,32 @@
 			<div id="fileDrawer" style="border-bottom: 2px solid grey; height: 100px; ">
 
 				<tr style="display:inline-block">
-					<td></td>
+					<td> 
+					</td>
 					<td>
 					<button  id="save" class="drawerButton" onclick="save()">
 						<!-- Save -->
 					</button></td>
 					<td>
 					<button class="drawerButton" id="fakeload" >
-						<!-- Load -->
-					</button></td>
-
+						<!--Load -->						
+					</button>
+					<input type="file" id="load" style="display: none;"/>
+					</td>
 					<td>
 					<button id="discard" class="drawerButton" onclick="discard()">
 						<!-- Discard -->
 					</button></td>
 					<input type="file" id="load" style="display: none;"/>
 				</tr>
-
+				
 			</div>
 			<div id="examplesDrawer">
 
 			</div>
 
 		</div>
-
-		<div class="navBar">
-			<div id="navBarBG">
-				<tr>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Blog</a></td>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Projects</a></td>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Compiler</a></td>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we"class="navButton">About Us</a></td>
-				</tr>
-			</div>
-			<a href="http://www.soapboxrobotics.com/" id="homeLink"></a>
-		</div>
 		<button  class="drawerToggle drawerClosed"></button>
-
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -573,38 +503,12 @@
 						<textarea id="textarea_serialTest"></textarea>
 					</div>
 					<div class="modal-footer">
-						<button type="button" id="serial_disconnect" data-toggle="modal" data-dismiss="modal">
-							Disconnect
-						</button>
+						<button type="button" id="serial_disconnect" data-toggle="modal" data-dismiss="modal">Disconnect</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- Modal -->
-		<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-		<div class="modal-content">
-		<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">
-		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-		</button>
-		<h4 class="modal-title" id="myModalLabel">Step 1</h4>
-		</div>
-		<div class="modal-body">
-		Blockly Drag & Drop
-		<button id="sample-button">
-		Sample
-		</button>
-		</div>
-		<div class="modal-footer">
-		<button type="button" data-toggle="modal" data-dismiss="modal" data-target="#myModal2">
-		Next
-		</button>
-		</div>
-		</div>
-		</div>
-		</div> -->
 
 		<!-- <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -661,8 +565,8 @@
 		</div> -->
 
 		<table height="100%" width="100%">
-			<!-- <tr>
-			<td><!-- <a href="http://soapboxrobotics.com"><img src="http://i.imgur.com/3mu5v71.png" style="width:125px;height:75px" border="1" alt="Soapbox Robotics"></a> --><!--<button id="blinkload" onclick="blinkload()">
+			<!-- <tr> -->
+		<!--<button id="blinkload" onclick="blinkload()">
 			Blink!
 			</button>
 			<button id="serialReadload" onclick="serialReadload()">
@@ -687,9 +591,8 @@
 					<button class="columnIcon" id="cb_cf_flash_btn" onclick="compileFlash()">
 						<!-- Compile and Flash! -->
 					</button><!-- <select id="cb_cf_baud_rates"></select><p id="cb_cf_operation_output"></p> --></td>
-					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#myModal">
-						<!-- Open Serial Monitor -->
-					</button>
+					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#myModal"></button>
+
 
 			</td>
 		</table></td>
@@ -759,3 +662,4 @@
 		</script>
 	</body>
 </html>
+

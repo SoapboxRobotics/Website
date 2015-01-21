@@ -726,10 +726,6 @@ compilerflasher = function(lf){
         /*
          Serial Monitor functions
          */
-        var smoothie = new SmoothieChart({scaleSmoothing:0.605,maxValue:1024,minValue:0});
-        smoothie.streamTo(document.getElementById("mycanvas"),1000);
-        var line1 = new TimeSeries();
-        
         var _that = this;
         this.connect = function() {
             speed = $("#cb_cf_baud_rates option:selected").val();
@@ -743,7 +739,7 @@ compilerflasher = function(lf){
                     $("#serial_monitor_content").show(1000);
                     this.connected = true;
                     var pl = this;
-                    $("#serial_disconnect").click(function(){pl.disconnect()});
+                    $("#cb_cf_serial_monitor_connect").html("Disconnect").unbind('click').click(function(){pl.disconnect()});
                     //$("#serial_hud").html("");
 
                     var pl = this;
@@ -773,46 +769,38 @@ compilerflasher = function(lf){
                     //$("#serial_hud").html(document.createTextNode(this.serialMonitorVal));
                     pl = this;
                     
+                    var smoothie = new SmoothieChart();
+                    smoothie.streamTo(document.getElementById("mycanvas"),1000);
+                    var line1 = new TimeSeries();
                     smoothie.addTimeSeries(line1);
-                    var temp = 0;
                     
-                    window.serialMonitorUpdater = setInterval(function(){   
-                    	
+                    window.serialMonitorUpdater = setInterval(function(){
                         if(pl.serialMonitorToAppend != '')
                         {
                             var total_length =  pl.serialMonitorToAppend.length + pl.serialMonitorVal.length;
                             if(total_length > pl.max_monitor_length)
                             {
                                 pl.serialMonitorVal = pl.serialMonitorVal.substring(total_length - pl.max_monitor_length) + pl.serialMonitorToAppend;
-                                $("#serial_hud").html(document.createTextNode(pl.serialMonitorVal));
+                                //$("#serial_hud").html(document.createTextNode(pl.serialMonitorVal));
                                 $("#textarea_serialTest").html(document.createTextNode(pl.serialMonitorToAppend));
                             }
                             else
                             {
                                 pl.serialMonitorVal = pl.serialMonitorVal + pl.serialMonitorToAppend;
-                                $("#serial_hud").append(document.createTextNode(pl.serialMonitorToAppend));
+                                //$("#serial_hud").append(document.createTextNode(pl.serialMonitorToAppend));
                                 $("#textarea_serialTest").html(document.createTextNode(pl.serialMonitorToAppend));
-                            }
-                            
+                            }                            
                             pl.serialMonitorToAppend = '';
-                            temp = document.createTextNode(pl.serialMonitorToAppend);
-                                                       
+
+                            setInterval(function() {
+                            	  line1.append(new Date().getTime(), pl.serialMonitorToAppend);
+                            	}, 2000);
+                            
                             if($('#autoscroll_check').is(':checked'));
                                 $("#serial_hud").scrollTo(99999999);
                         }
-                        setInterval(function() {
-                        	if(pl.serialMonitorToAppend != '')
-                        	{
-                        		line1.append(new Date().getTime(),pl.serialMonitorToAppend);
-                        		//$("#textarea_serialTest").html(document.createTextNode(pl.serialMonitorToAppend));
-                        	}
-                        	else
-                        	{
-                        		line1.append(new Date().getTime(),temp);
-                        		//$("#textarea_serialTest").html(document.createTextNode("0"));
-                        	}
-                      	}, 1000);
                         
+
                     }, 50);
 
                     if(typeof document.getElementById('plugin0').availablePorts !== 'undefined')
@@ -838,7 +826,6 @@ compilerflasher = function(lf){
         }
 
         this.disconnect = function(notified) {
-        	line1.data = [];
             notified = notified || false;
             if (this.connected == true) {
                 if(notified == false)
@@ -855,7 +842,7 @@ compilerflasher = function(lf){
                     clearInterval(window.portValidatorInterval);
 
                 var pl = this;
-                $("#cb_cf_serial_monitor_connect").html("<i class='icon-list-alt'></i>").unbind('click').click(function(){pl.connect()});
+                $("#cb_cf_serial_monitor_connect").html("<i class='icon-list-alt'></i> Open Serial Monitor").unbind('click').click(function(){pl.connect()});
                 this.connected = false;
 
                 $("#cb_cf_serial_monitor_connect").attr('disabled', 'disabled');
@@ -969,10 +956,7 @@ compilerflasher = function(lf){
     }
     if($("button#cb_cf_verify_btn").length > 0)
     {
-        $("#cb_cf_verify_btn").click(function(){
-        	arduinoCode();
-        	cb.verify();
-        });
+        $("#cb_cf_verify_btn").click(function(){cb.verify()});
         this.loaded_elements.push("cb_cf_verify_btn");
     }
     if($("select#cb_cf_boards").length > 0)
@@ -998,10 +982,7 @@ compilerflasher = function(lf){
     if($("button#cb_cf_flash_btn").length > 0)
     {
         $("#cb_cf_flash_btn")
-                .click(function(){
-                	arduinoCode();
-                	cb.usbflash();
-                })
+                .click(function(){cb.usbflash()})
                 .attr("disabled", "disabled");;
         this.loaded_elements.push("cb_cf_flash_btn");
     }
@@ -1026,8 +1007,8 @@ compilerflasher = function(lf){
     if($("select#cb_cf_baud_rates").length > 0)
     {
         $("#cb_cf_baud_rates").append(
-        				"<option>19200</option>" +
-                        "<option>9600</option>" +                    
+                        "<option>9600</option>" +
+                        "<option>19200</option>" +
                         "<option>28800</option>" +
                         "<option>38400</option>" +
                         "<option>57600</option>" +
