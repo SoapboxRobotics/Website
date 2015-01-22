@@ -193,7 +193,7 @@ Blockly.Language.servo_read_degrees = {
 };
 
 Blockly.Language.serial_print = {
-  category: 'Output',
+  category: 'Communication',
   helpUrl: 'http://www.arduino.cc/en/Serial/Print',
   init: function() {
     this.setColour(230);
