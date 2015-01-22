@@ -42,7 +42,7 @@ Blockly.Language.custom_write = {
 
 //define write block
 Blockly.Language.car_logic = {
-  category: 'Custom',
+  category: 'Soapbox',
   helpUrl: '',
   init: function() {
 	  this.setColour(120);
@@ -65,7 +65,7 @@ Blockly.Language.car_logic = {
 };
 
 Blockly.Language.car_turnleft = {
-	category: 'Custom',
+	category: 'Soapbox',
 	helpUrl: '',
 	init: function() {
 		this.setColour(0);
@@ -78,7 +78,7 @@ Blockly.Language.car_turnleft = {
 };
 
 Blockly.Language.car_turnright = {
-		category: 'Custom',
+		category: 'Soapbox',
 		helpUrl: '',
 		init: function() {
 			this.setColour(0);
@@ -91,7 +91,7 @@ Blockly.Language.car_turnright = {
 };
 
 Blockly.Language.car_turnforward = {
-		category: 'Custom',
+		category: 'Soapbox',
 		helpUrl: '',
 		init: function() {
 			this.setColour(0);
@@ -104,7 +104,7 @@ Blockly.Language.car_turnforward = {
 };
 
 Blockly.Language.car_lefteye = {
-		category: 'Custom',
+		category: 'Soapbox',
 		helpUrl: '',
 		init: function() {
 			this.setColour(200);
@@ -117,7 +117,7 @@ Blockly.Language.car_lefteye = {
 };
 
 Blockly.Language.car_righteye = {
-		category: 'Custom',
+		category: 'Soapbox',
 		helpUrl: '',
 		init: function() {
 			this.setColour(200);
@@ -130,7 +130,7 @@ Blockly.Language.car_righteye = {
 };
 
 Blockly.Language.serial_read = {
-	  category: 'Custom',
+	  category: 'Communication',
 	  helpUrl: '',
 	  init: function() {
 	    this.setColour(230);
@@ -212,7 +212,7 @@ Blockly.Arduino.custom_read = function() {
 };
 
 Blockly.Arduino.serial_read = function() {
-  Blockly.Arduino.setups_['setup_serial'] = 'Serial.begin(9600);\n';
+  Blockly.Arduino.setups_['setup_serial'] = 'Serial.begin(19200);\n';
   var dropdown_pin = this.getTitleValue('PIN');  
   var code = 'Serial.println(analogRead('+dropdown_pin+'))';
   return [code, Blockly.Arduino.ORDER_ATOMIC];

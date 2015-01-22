@@ -25,7 +25,7 @@
 
 Blockly.Language.math_number = {
   // Numeric value.
-  category: Blockly.LANG_CATEGORY_MATH,
+  category: 'Constant',
   helpUrl: Blockly.LANG_MATH_NUMBER_HELPURL,
   init: function() {
     this.setColour(230);

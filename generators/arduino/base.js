@@ -29,7 +29,7 @@
 if (!Blockly.Language) Blockly.Language = {};
 
 Blockly.Language.base_delay = {
-  category: 'Control',
+  category: 'Time',
   helpUrl: 'http://arduino.cc/en/Reference/delay',
   init: function() {
     this.setColour(130);
@@ -63,7 +63,7 @@ Blockly.Language.base_map = {
 };
 
 Blockly.Language.inout_buildin_led = {
-   category: 'In/Out',
+   category: 'Output',
    helpUrl: 'http://arduino.cc/en/Reference/DigitalWrite',
    init: function() {
      this.setColour(190);
@@ -77,7 +77,7 @@ Blockly.Language.inout_buildin_led = {
 };
 
 Blockly.Language.inout_digital_write = {
-  category: 'In/Out',
+  category: 'Output',
   helpUrl: 'http://arduino.cc/en/Reference/DigitalWrite',
   init: function() {
     this.setColour(230);
@@ -93,7 +93,7 @@ Blockly.Language.inout_digital_write = {
 };
 
 Blockly.Language.inout_digital_read = {
-  category: 'In/Out',
+  category: 'Input',
   helpUrl: 'http://arduino.cc/en/Reference/DigitalRead',
   init: function() {
     this.setColour(230);
@@ -106,7 +106,7 @@ Blockly.Language.inout_digital_read = {
 };
 
 Blockly.Language.inout_analog_write = {
-  category: 'In/Out',
+  category: 'Output',
   helpUrl: 'http://arduino.cc/en/Reference/AnalogWrite',
   init: function() {
     this.setColour(230);
@@ -124,7 +124,7 @@ Blockly.Language.inout_analog_write = {
 };
 
 Blockly.Language.inout_analog_read = {
-  category: 'In/Out',
+  category: 'Input',
   helpUrl: 'http://arduino.cc/en/Reference/AnalogRead',
   init: function() {
     this.setColour(230);
@@ -137,7 +137,7 @@ Blockly.Language.inout_analog_read = {
 };
 
 Blockly.Language.inout_highlow = {
-  category: 'In/Out',
+  category: 'Constant',
   helpUrl: 'http://arduino.cc/en/Reference/Constants',
   init: function() {
     this.setColour(230);
@@ -193,7 +193,7 @@ Blockly.Language.servo_read_degrees = {
 };
 
 Blockly.Language.serial_print = {
-  category: 'In/Out',
+  category: 'Output',
   helpUrl: 'http://www.arduino.cc/en/Serial/Print',
   init: function() {
     this.setColour(230);
