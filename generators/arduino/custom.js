@@ -137,7 +137,9 @@ Blockly.Language.serial_read = {
 		this.appendDummyInput("")
 		    .appendTitle("Serial Print PIN#")
 		    .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
-	    this.setOutput(true, 'Number');
+	    this.setOutput(false, 'Number');
+	    this.setPreviousStatement(true, null);
+	    this.setNextStatement(true, null);
 	    this.setTooltip('input block');
 	  	}
 };
@@ -214,6 +216,6 @@ Blockly.Arduino.custom_read = function() {
 Blockly.Arduino.serial_read = function() {
   Blockly.Arduino.setups_['setup_serial'] = 'Serial.begin(19200);\n';
   var dropdown_pin = this.getTitleValue('PIN');  
-  var code = 'Serial.println(analogRead('+dropdown_pin+'))';
+  var code = 'Serial.println(analogRead('+dropdown_pin+'));\n';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

@@ -47,17 +47,27 @@
 				// Whitelist of blocks to keep.
 				var newLanguage = {}
 				var keepers = [
-				//io
-				'inout_highlow', 'inout_digital_write', 'inout_digital_read', 'inout_analog_write', 'inout_analog_read', 'serial_print', 'inout_buildin_led',
-				//control
-				'base_delay', 'controls_if', 'controls_if_if', 'controls_if_elseif', 'controls_if_else', 'controls_for', 'controls_whileUntil', 'controls_flow_statements',
-				//math
-				'math_number',
-				//logic
-				'logic_compare', 'logic_operation', 'logic_negate', 'logic_null', //'logic_boolean',
-				//variable
+				//input
+				'inout_digital_read','inout_analog_read',
+				//output
+				'inout_digital_write','inout_analog_write','inout_buildin_led',
+				//constant
+				'inout_highlow','math_number',
+				//variables
 				'variables_get', 'variables_set', 'variables_declare',
-				//custom
+				//time
+				'base_delay',
+				//Logic
+				'controls_if', 'controls_if_if', 'controls_if_elseif', 'controls_if_else',
+				//Boolean
+				'logic_compare', 'logic_negate',
+				//Comparison
+				'logic_operation',
+				//Loops
+				'controls_for', 'controls_whileUntil', 'controls_flow_statements',
+				//Communication
+				 'serial_print',
+				//Soapbox
 				'car_logic', 'car_turnleft', 'car_turnright', 'car_turnforward', 'car_lefteye', 'car_righteye', 'serial_read'];
 				for (var x = 0; x < keepers.length; x++) {
 					newLanguage[keepers[x]] = Blockly.Language[keepers[x]];
