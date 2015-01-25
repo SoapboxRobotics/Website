@@ -74,6 +74,8 @@ compilerflasher = function(lf){
 
     this.setOperationOutput = function(message){
         $("#cb_cf_operation_output").html(message);
+        $("#verify_modal_output").html(message);
+        $("#flash_modal_output").html(message);
     }
 
     this.on = function(type, listener){
