@@ -969,9 +969,10 @@ compilerflasher = function(lf){
     }
     if($("button#cb_cf_verify_btn").length > 0)
     {
-        $("#verifyModal").focus(function(){
+        $("#cb_cf_verify_btn").click(function(){
         	arduinoCode();
         	cb.verify();
+        	$('#verifyModal').modal('show');
         });
         this.loaded_elements.push("cb_cf_verify_btn");
     }
@@ -997,10 +998,11 @@ compilerflasher = function(lf){
     }
     if($("button#cb_cf_flash_btn").length > 0)
     {
-        $("#flashModal")
-                .focus(function(){
+        $("#cb_cf_flash_btn")
+                .click(function(){
                 	arduinoCode();
                 	cb.usbflash();
+                	$('#flashModal').modal('show');
                 })
                 .attr("disabled", "disabled");;
         this.loaded_elements.push("cb_cf_flash_btn");
