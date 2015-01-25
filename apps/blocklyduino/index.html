@@ -136,6 +136,18 @@
 		</script>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<style>
+			p{
+				/*position: absolute;*/
+				z-index: 9999999;
+				color:black;
+				font-weight: bold;
+				font-size: 2em;
+				font-family: Roboto-Regular;	
+				margin-top: 1%;
+				margin-left: 2%;
+
+			}
+			
 			body {
 				font-family: sans-serif;
 				margin: 0;
@@ -499,8 +511,13 @@
 		</style>
 	</head>
 	<body>
-		<div id="leftBG"></div>
-		<div id="rightBG"></div>
+		<div id="leftBG">
+
+		</div>
+		<div id="rightBG">
+								<p id="cb_cf_operation_output"></p> 
+
+		</div>
 		<div id="drawer">
 			<div id="settingsDrawer" style="border-bottom: 2px solid grey; height: 100px;">
 				<select id="cb_cf_ports"></select>
@@ -582,7 +599,7 @@
 					</button>
 					<button class="columnIcon" id="cb_cf_flash_btn" onclick="compileFlash()">
 						<!-- Compile and Flash! -->
-					</button><!--<p id="cb_cf_operation_output"></p> -->
+					</button>
 					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#myModal">
 						<!-- Open Serial Monitor -->
 					</button></td>
