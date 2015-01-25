@@ -217,5 +217,5 @@ Blockly.Arduino.serial_read = function() {
   Blockly.Arduino.setups_['setup_serial'] = 'Serial.begin(19200);\n';
   var dropdown_pin = this.getTitleValue('PIN');  
   var code = 'Serial.println(analogRead('+dropdown_pin+'));\n';
-  return [code, Blockly.Arduino.ORDER_ATOMIC];
+  return code;
 };
