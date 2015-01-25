@@ -564,10 +564,13 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<p id="status">Warning</p>
+						<p id="status">Reminder</p>
 					</div>
 					<div class="modal-body">
-						<p id="cb_cf_operation_output"></p>
+						<p> Compiler does not work yet. Please 
+						<a href="https://codebender.cc/static/plugin">Install</a>
+						Codebender plugin.
+						</p>
 					</div>
 					<div class="modal-footer">
 						<button type="button" id="serial_disconnect" data-toggle="modal" data-dismiss="modal">
@@ -692,7 +695,6 @@
 
 			$(document).ready(function() {
 				compilerflasher = new compilerflasher(getFiles);
-				$('#startupModal').modal('show');
 
 				$('.drawerToggle').click(function() {
 					if ($(this).hasClass('drawerClosed')) {

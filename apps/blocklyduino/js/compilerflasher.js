@@ -10,7 +10,7 @@ compilerflasher = function(lf){
     this.minVersion = "1.6.0.8";
 
     var that = this;
-
+    
     this.eventManager = new function(){
         this._listeners = {};
 
@@ -251,6 +251,7 @@ compilerflasher = function(lf){
 
                 if (!this.plugin_found)
                 {
+                	$('#startupModal').modal('show');
                     var alert = this.browserSpecificPluginInstall("To program your Arduino from your browser, install the Codebender Plugin. ");
                     this.owner.setOperationOutput(alert);
                     this.owner.eventManager.fire('plugin_notification', alert);
