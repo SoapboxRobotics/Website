@@ -97,11 +97,6 @@
 
 			}
 
-			function compileFlash() {
-				document.getElementById('cb_cf_flash_btn').style.border = ' 1px solid darkGray';
-
-			}
-
 			/**
 			 * Initialize Blockly.  Called on page load.
 			 * @param {!Blockly} blockly Instance of Blockly from iframe.
@@ -515,7 +510,7 @@
 
 		</div>
 		<div id="rightBG">
-								<p id="cb_cf_operation_output"></p> 
+			<p id="cb_cf_operation_output"></p>
 
 		</div>
 		<div id="drawer">
@@ -563,9 +558,28 @@
 			<a href="http://www.soapboxrobotics.com/" id="homeLink"></a>
 		</div>
 		<button  class="drawerToggle drawerClosed"></button>
-
+		
 		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="startupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<p id="status">Warning</p>
+					</div>
+					<div class="modal-body">
+						<p id="cb_cf_operation_output"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" id="serial_disconnect" data-toggle="modal" data-dismiss="modal">
+							OK
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="serialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -582,6 +596,44 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- Verify Modal -->
+		<div class="modal fade" id="verifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<p id="status">Status</p>
+					</div>
+					<div class="modal-body">
+						<p id="cb_cf_operation_output"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" id="close_status" data-toggle="modal" data-dismiss="modal">
+							OK
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Flash Modal -->
+		<div class="modal fade" id="flashModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<p id="status">Status</p>
+					</div>
+					<div class="modal-body">
+						<p id="cb_cf_operation_output"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" id="close_status" data-toggle="modal" data-dismiss="modal">
+							OK
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<table height="100%" width="100%">
 			<td>
@@ -589,18 +641,17 @@
 				<tr id="tabRow">
 					<td id="tab_blocks" class="taboff"  onclick="tabClick(this.id)">Blockly</td>
 					<td id="tab_xml" class="taboff"  onclick="tabClick(this.id)">XML</td>
-
 					<td class="tabmin">
 					<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()">
 						<!-- Arduino -->
 					</button>
-					<button class="columnIcon" id="cb_cf_verify_btn">
+					<button class="columnIcon" id="cb_cf_verify_btn" data-toggle="modal" data-target="#verifyModal">
 						<!-- Compile the Code! -->
 					</button>
-					<button class="columnIcon" id="cb_cf_flash_btn" onclick="compileFlash()">
+					<button class="columnIcon" id="cb_cf_flash_btn" data-toggle="modal" data-target="#flashModal">
 						<!-- Compile and Flash! -->
 					</button>
-					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#myModal">
+					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#serialModal">
 						<!-- Open Serial Monitor -->
 					</button></td>
 
@@ -641,6 +692,7 @@
 
 			$(document).ready(function() {
 				compilerflasher = new compilerflasher(getFiles);
+				$('#startupModal').modal('show');
 
 				$('.drawerToggle').click(function() {
 					if ($(this).hasClass('drawerClosed')) {

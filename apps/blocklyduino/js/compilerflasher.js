@@ -969,7 +969,7 @@ compilerflasher = function(lf){
     }
     if($("button#cb_cf_verify_btn").length > 0)
     {
-        $("#cb_cf_verify_btn").click(function(){
+        $("#verifyModal").focus(function(){
         	arduinoCode();
         	cb.verify();
         });
@@ -997,8 +997,8 @@ compilerflasher = function(lf){
     }
     if($("button#cb_cf_flash_btn").length > 0)
     {
-        $("#cb_cf_flash_btn")
-                .click(function(){
+        $("#flashModal")
+                .focus(function(){
                 	arduinoCode();
                 	cb.usbflash();
                 })
