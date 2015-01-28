@@ -1,54 +1,64 @@
-BlocklyDuino
-=======================
+Soapbox Robotics Web Compiler
+=======
 
-Introduction
------------------
+Soapbox Robotics Web Compiler is based on Blocklyduino and Codebender compiler
 
-BlocklyDuino is based on blockly, the web-based, graphical programming editor. Provide language blocks and code generators for arduino programming.
+### Welcome to Soapbox Robotics Web Compiler
 
-BlocklyDuino also support Grove blocks to easily get started with microcontroller-based experimentation and learning.
+BlocklyDuino is a **web-based visual programming editor for [Arduino](http://www.arduino.cc/)**.
 
+BlocklyDuino is based on [Blockly](http://code.google.com/p/blockly/), the web-based, graphical programming editor
 
-* Blockly http://code.google.com/p/blockly/
-* Arduino http://www.arduino.cc/
-* Grove http://www.seeedstudio.com/wiki/GROVE_-_Starter_Kit_V1.1b
+[Codebender](https://codebender.cc) compiler is a fast cloud-based compiler 
 
-Install
------------------
+### Features
 
-BlocklyDuino is a web tool. You can give it a try at http://www.gasolin.idv.tw/public/blockly/demos/blocklyduino/index.html . 
+* Programming Arduino by drag-and-drop blocks
+* Generate fully compatible Arduino source code
+* Compile Arduino code with error checking
+* Upload Arduino code to Arduino-capable devices
+* Graphically monitor serial input
 
-If you want to install it locally. Checkout Blockly and BlocklyDuino from github.
+### Instructions
+To compile and upload to Arduino devices, download codebender plugin @ https://codebender.cc/static/plugin 
 
-$ git clone https://github.com/gasolin/BlocklyDuino.git
+Plugin works only on Firefox and Chrome browser on:
+* Windows (from Windows XP up to the Windows 10 Beta) 
+* Mac OS X 10.6-10.10
+* Linux
 
+For mobile devices running iOS, Android & ChromeOS:
 
-Put blockly into a web server and open the url like localhost/public/blockly/demos/blocklyduino/index.html for use.
+* Blocklyduino (Graphical Programming) and code error checking still function
+* Users can still copy the generated Arduino and paste it on Arduino-capable devices.
 
-Usage (3 Step)
------------------
+To hack the compiler:
+* Git clone
+* Host files in web server and insert localhost/apps/blocklyduino/index.html in the address bar
+* Have fun hacking!
+* Share your findings with us to improve
 
-1. Open browser to BlocklyDuino, Drag and Drop blocks to make arduino program. 
-2. Select 'Arduino' tab to copy source code to Arduino IDE
-3. press 'upload' button to burn the code into arduino
+### Authors and Contributors
+Soapbox Robotics
+GuoQin Low guoqin.low@soapboxrobotics.com Donn Pasiliao donn.pasiliao@soapboxrobotics.com
 
-Credit
------------------
-
-Fred Lin is the creator of BlocklyDuino.
-
+Thanks Fred Lin gasolin+blockly@gmail.com
+Thanks Codebender guys for the compiler https://codebender.cc
 Thanks Neil Fraser, Q.Neutron from Blockly http://code.google.com/p/blockly/
-Arduino and Seeeduino guys for Arduino and Grove blocks.
+Thanks Arduino and guys for Arduino.
 
-The project is inspired by arduiblock https://github.com/taweili/ardublock and modkit http://www.modk.it/
+The project is inspired by 
+* [ardublock](https://github.com/taweili/ardublock)
+* [blocklyduino](https://github.com/gasolin/BlocklyDuino)
+* [codebender](https://github.com/codebendercc?page=1)
 
-License
------------------
-Copyright (C) 2012 Fred Lin gasolin+arduino@gmail.com
+### License
+
+Copyright (C) 2014~2015 
+GuoQin Low guoqin.low@soapboxrobotics.com Donn Pasiliao donn.pasiliao@soapboxrobotics.com
 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
-
