@@ -29,8 +29,8 @@ Plugin works only on Firefox and Chrome browser on:
 
 For mobile devices running iOS, Android & ChromeOS:
 
-Blocklyduino (Graphical Programming) and code error checking still function.
-Users can still copy the generated Arduino and paste it on Arduino-capable devices.
+* Blocklyduino (Graphical Programming) and code error checking still function
+* Users can still copy the generated Arduino and paste it on Arduino-capable devices.
 
 To hack the compiler:
 * Download files
@@ -40,8 +40,7 @@ To hack the compiler:
 
 ### Authors and Contributors
 Soapbox Robotics
-Guo Qin Low guoqin.low@soapboxrobotics.com
-Donn Pasiliao donn.pasiliao@soapboxrobotics.com
+GuoQin Low guoqin.low@soapboxrobotics.com Donn Pasiliao donn.pasiliao@soapboxrobotics.com
 
 Thanks Fred Lin gasolin+blockly@gmail.com
 Thanks Codebender guys for the compiler https://codebender.cc
@@ -56,8 +55,7 @@ The project is inspired by
 ### License
 
 Copyright (C) 2014~2015 
-Guo Qin Low guoqin.low@soapboxrobotics.com
-Donn Pasiliao donn.pasiliao@soapboxrobotics.com
+GuoQin Low guoqin.low@soapboxrobotics.com Donn Pasiliao donn.pasiliao@soapboxrobotics.com
 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
