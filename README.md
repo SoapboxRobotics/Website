@@ -33,7 +33,7 @@ For mobile devices running iOS, Android & ChromeOS:
 * Users can still copy the generated Arduino and paste it on Arduino-capable devices.
 
 To hack the compiler:
-* Download files
+* Git clone
 * Host files in web server and insert localhost/apps/blocklyduino/index.html in the address bar
 * Have fun hacking!
 * Share your findings with us to improve
