@@ -29,13 +29,14 @@ Plugin works only on Firefox and Chrome browser on:
 
 For mobile devices running iOS, Android & ChromeOS:
 
-Blocklyduino (Graphical Programming) and code error checking still function. Users can still copy the generated Arduino and paste it on Arduino-capable devices.
+Blocklyduino (Graphical Programming) and code error checking still function.
+Users can still copy the generated Arduino and paste it on Arduino-capable devices.
 
 To hack the compiler:
-1. Download files
-2. Host files in web server and insert localhost/apps/blocklyduino/index.html in the address bar
-3. Have fun hacking!
-4. Share your findings with us to improve
+* Download files
+* Host files in web server and insert localhost/apps/blocklyduino/index.html in the address bar
+* Have fun hacking!
+* Share your findings with us to improve
 
 ### Authors and Contributors
 Soapbox Robotics
