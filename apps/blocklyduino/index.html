@@ -228,7 +228,7 @@
 				color: #333333;
 				font-size: 1em;
 				background-color: #fefefe;
-				background-image: url("media/ArduinoWallpaper.png");
+				/*background-image: url("media/ArduinoWallpaper.png");*/
 				background-size: 100%;
 				z-index: 2;
 				border: 10px solid #401800;
@@ -645,16 +645,16 @@
 					<td id="tab_blocks" class="taboff"  onclick="tabClick(this.id)">Blockly</td>
 					<td id="tab_xml" class="taboff"  onclick="tabClick(this.id)">XML</td>
 					<td class="tabmin">
-					<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()">
+					<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()" title="Write">
 						<!-- Arduino -->
 					</button>
-					<button class="columnIcon" id="cb_cf_verify_btn" data-toggle="modal" data-target="#verifyModal">
+					<button class="columnIcon" id="cb_cf_verify_btn" data-toggle="modal" data-target="#verifyModal" title="Compile">
 						<!-- Compile the Code! -->
 					</button>
-					<button class="columnIcon" id="cb_cf_flash_btn" data-toggle="modal" data-target="#flashModal">
+					<button class="columnIcon" id="cb_cf_flash_btn" data-toggle="modal" data-target="#flashModal" title="Compile and Flash">
 						<!-- Compile and Flash! -->
 					</button>
-					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#serialModal">
+					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#serialModal" title="Serial Monitor">
 						<!-- Open Serial Monitor -->
 					</button></td>
 

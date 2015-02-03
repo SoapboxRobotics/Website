@@ -18,7 +18,7 @@
    viewBox="0 0 99.999999 100"
    xml:space="preserve"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="gear.svg"><metadata
+   sodipodi:docname="Gear.svg"><metadata
    id="metadata39"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
@@ -111,4 +111,28 @@
    id="g33"
    transform="translate(38.4375,128.863)">
 </g>
-</svg>
+<rect
+   style="fill:#00ff00;fill-opacity:1;stroke:#777777;stroke-opacity:0.53333326999999997"
+   id="rect2997"
+   width="16.121439"
+   height="16.300568"
+   x="2.1495254"
+   y="2.3757253" /><rect
+   style="fill:#000080;fill-opacity:1;stroke:#777777;stroke-opacity:0.53333326999999997"
+   id="rect2999"
+   width="17.554457"
+   height="18.629219"
+   x="82.040215"
+   y="3.0922337" /><rect
+   style="fill:#00ffff;fill-opacity:1;stroke:#777777;stroke-opacity:0.53333326999999997"
+   id="rect3001"
+   width="23.823906"
+   height="27.764702"
+   x="78.815926"
+   y="84.953323" /><rect
+   style="fill:#aa0000;fill-opacity:1;stroke:#777777;stroke-opacity:0.53333326999999997"
+   id="rect3003"
+   width="31.347244"
+   height="29.376846"
+   x="-10.747626"
+   y="83.699432" /></svg>
