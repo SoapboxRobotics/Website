@@ -1003,11 +1003,11 @@ compilerflasher = function(lf){
     {
         $("#cb_cf_flash_btn")
                 .click(function(){
-                	arduinoCode();
-                	cb.usbflash();
+                	arduinoCode();             	
                 	$('#flashModal').modal('show');
-                })
-                .attr("disabled", "disabled");;
+                	cb.usbflash();
+                });
+                //.attr("disabled", "disabled");;
         this.loaded_elements.push("cb_cf_flash_btn");
     }
     if($("select#cb_cf_programmers").length > 0)
@@ -1043,7 +1043,6 @@ compilerflasher = function(lf){
     }
     if($("button#cb_cf_serial_monitor_connect").length > 0)
     {
-
         $("#cb_cf_serial_monitor_connect").click(function(){cb.pluginHandler.connect()})
                 .attr('disabled', 'disabled');
         this.loaded_elements.push("cb_cf_serial_monitor_connect");
@@ -1348,6 +1347,7 @@ compilerflasher = function(lf){
         }
         else
         {
+        	$('#startupModal').modal('show');
             this.setOperationOutput("Please select a valid port!");
             this.eventManager.fire("plugin_notification", "Please select a valid port!!");
         }
