@@ -131,18 +131,17 @@
 		</script>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<style>
-			p{
+			p {
 				/*position: absolute;*/
 				z-index: 9999999;
-				color:black;
+				color: black;
 				font-weight: bold;
 				font-size: 2em;
-				font-family: Roboto-Regular;	
+				font-family: Roboto-Regular;
 				margin-top: 1%;
 				margin-left: 2%;
-
 			}
-			
+
 			body {
 				font-family: sans-serif;
 				margin: 0;
@@ -341,7 +340,7 @@
 				color: white;
 			}
 			button:active {
-				
+
 				border: none;
 			}
 			button:hover {
@@ -465,18 +464,21 @@
 				margin-right: auto;
 				background-image: url("media/homeLink.svg");
 				background-size: 100% 100%;
-				height: 150px;
-				width: 150px;
+				height: 10vh;
+				width: 10vh;
 				background-color: transparent;
+				z-index: 9999;
 			}
 
 			#navBarBG {
 				width: 100%;
-				height: 90px;
+				height: 5vh;
 				position: fixed;
-				bottom: 1%;
+				bottom: 2vh;
 				background-color: #eeeeee;
 				opacity: 0.8;
+				z-index: 9999;
+				border: 2px solid slategrey;
 			}
 
 			.navButton {
@@ -485,16 +487,26 @@
 				margin-left: 3.9%;
 				height: 100%;
 				text-align: center;
-				color: black;
+				vertical-align: center;
+				color: #1a1a1a;
 				font-family: Roboto-Regular;
+				letter-spacing: 2px;
 				display: inline-block;
-				font-weight: 900;
-				font-size: 2em;
-				padding-top: 28px;
-				padding-bottom: 28px;
+				font-weight: bolder;
+				font-size: 3vh;
 			}
 			.navButton:hover {
 				background-color: black;
+				color: white;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			a:link, a:visited, a:active {
+				text-decoration: none;
+				color: #1a1a1a;
 			}
 
 			a:hover {
@@ -558,20 +570,23 @@
 			<a href="http://www.soapboxrobotics.com/" id="homeLink"></a>
 		</div>
 		<button  class="drawerToggle drawerClosed"></button>
-		
+
 		<!-- Modal -->
 		<div class="modal fade" id="startupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<p id="status">Reminder</p>
+						<p id="status">
+							Reminder
+						</p>
 					</div>
 					<div class="modal-body">
-						<p> Please 
-						<a href="https://codebender.cc/static/plugin">Install</a>
-						Codebender plugin. 
-						<br><br>
-						Arduino Upload & Serial Monitor are disabled
+						<p>
+							Please <a href="https://codebender.cc/static/plugin">Install</a>
+							Codebender plugin.
+							<br>
+							<br>
+							Arduino Upload & Serial Monitor are disabled
 					</div>
 					<div class="modal-footer">
 						<button type="button" id="serial_disconnect" data-toggle="modal" data-dismiss="modal">
@@ -581,7 +596,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Serial Modal -->
 		<div class="modal fade" id="serialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -600,13 +615,15 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Verify Modal -->
 		<div class="modal fade" id="verifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<p id="status">Compiling</p>
+						<p id="status">
+							Compiling
+						</p>
 					</div>
 					<div class="modal-body">
 						<p id="verify_modal_output"></p>
@@ -619,13 +636,15 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Flash Modal -->
 		<div class="modal fade" id="flashModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<p id="status">Uploading</p>
+						<p id="status">
+							Uploading
+						</p>
 					</div>
 					<div class="modal-body">
 						<p id="flash_modal_output"></p>
