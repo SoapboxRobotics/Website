@@ -514,6 +514,11 @@
 				color: lightgrey;
 				opacity: 1;
 			}
+			
+			.modal a{
+				text-decoration: underline;
+				color: blue;
+			}
 
 		</style>
 	</head>
@@ -562,8 +567,8 @@
 			<div id="navBarBG">
 				<tr>
 					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Blog</a></td>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Projects</a></td>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Compiler</a></td>
+					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" id="projNav">Projects</a></td>
+					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" id="compiler">Compiler</a></td>
 					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we"class="navButton">About Us</a></td>
 				</tr>
 			</div>
@@ -715,6 +720,22 @@
 
 			$(document).ready(function() {
 				compilerflasher = new compilerflasher(getFiles);
+
+				$('#compiler').mouseover(function() {
+					$('#compiler').html('Refresh');
+				});
+
+				$('#compiler').mouseout(function() {
+					$('#compiler').html("Compiler");
+				});
+
+				$('#projNav').mouseover(function() {
+					$('#projNav').html('Coming Soon');
+				});
+
+				$('#projNav').mouseout(function() {
+					$('#projNav').html("Projects");
+				});
 
 				$('.drawerToggle').click(function() {
 					if ($(this).hasClass('drawerClosed')) {
