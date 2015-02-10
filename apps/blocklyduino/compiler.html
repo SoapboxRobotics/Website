@@ -6,10 +6,9 @@
 		<script type="text/javascript" src="Blob.js"></script>
 		<script type="text/javascript" src="FileSaver.min.js"></script>
 		<script type="text/javascript" src="blockly_helper.js"></script>
-		<script src="js/bootstrap.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>	
 		<script src="js/compilerflasher.min.js" type="text/javascript"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="js/smoothie.min.js" type="text/javascript"></script>
 		<script src="js/intro.js" type="text/javascript"></script>
 
@@ -524,7 +523,6 @@
 		</style>
 	</head>
 	<body>
-
 		<div id="leftBG">
 			
 		</div>
@@ -532,27 +530,27 @@
 
 		</div>
 
-		<div id="drawer" data-step="2" data-intro="Click here to show setting">
+		<div id="drawer">
 			<div id="settingsDrawer" style="border-bottom: 2px solid grey; height: 100px;">
-				<select id="cb_cf_ports"></select>
-				<select id="cb_cf_boards"></select>
-				<select id="cb_cf_baud_rates"></select>
+				<select id="cb_cf_ports" data-step="2" data-intro="Select Port"></select>
+				<select id="cb_cf_boards" data-step="3" data-intro="Select Board"></select>
+				<select id="cb_cf_baud_rates" data-step="4" data-intro="Select Baud Rates"></select>
 			</div>
 			<div id="fileDrawer" style="border-bottom: 2px solid grey; height: 100px; ">
 
 				<tr style="display:inline-block">
 					<td></td>
 					<td>
-					<button  id="save" class="drawerButton" onclick="save()">
+					<button  id="save" class="drawerButton" onclick="save()" data-step="5" data-intro="Save">
 						<!-- Save -->
 					</button></td>
 					<td>
-					<button class="drawerButton" id="fakeload" >
+					<button class="drawerButton" id="fakeload" data-step="6" data-intro="Load" >
 						<!-- Load -->
 					</button></td>
 
 					<td>
-					<button id="discard" class="drawerButton" onclick="discard()">
+					<button id="discard" class="drawerButton" onclick="discard()" data-step="7" data-intro="Discard">
 						<!-- Discard -->
 					</button></td>
 					<input type="file" id="load" style="display: none;"/>
@@ -560,19 +558,19 @@
 
 			</div>
 			<div id="examplesDrawer">
-
+				<button id="tutorial" onclick= "startTour()">Tutorial</button>
 			</div>
 
 		</div>
 		<div>
 			<td>
-				<button id="tutorial" onclick="javascript:introJs().start();">Tutorial</button>
+				
 			</td>
 		</div>
 		<div class="navBar">
 			<div id="navBarBG">
 				<tr>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton">Blog</a></td>
+					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" >Blog</a></td>
 					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" id="projNav">Projects</a></td>
 					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" id="compiler">Compiler</a></td>
 					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we"class="navButton">About Us</a></td>
@@ -609,7 +607,7 @@
 		</div>
 
 		<!-- Serial Modal -->
-		<div class="modal fade" id="serialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="serialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -676,16 +674,16 @@
 					<td id="tab_blocks" class="taboff"  onclick="tabClick(this.id)">Blockly</td>
 					<td id="tab_xml" class="taboff"  onclick="tabClick(this.id)">XML</td>
 					<td class="tabmin">
-					<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()" title="Write">
+					<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()" title="Write" data-step="8" data-intro="Write">
 						<!-- Arduino -->
 					</button>
-					<button class="columnIcon" id="cb_cf_verify_btn" data-toggle="modal" data-target="#verifyModal" title="Compile">
+					<button class="columnIcon" id="cb_cf_verify_btn" data-toggle="modal" data-target="#verifyModal" title="Compile" data-step="9" data-intro="Compile">
 						<!-- Compile the Code! -->
 					</button>
-					<button class="columnIcon" id="cb_cf_flash_btn" data-toggle="modal" data-target="#flashModal" title="Compile and Flash">
+					<button class="columnIcon" id="cb_cf_flash_btn" data-toggle="modal" data-target="#flashModal" title="Compile and Flash" data-step="10" data-intro="Compile and Flash">
 						<!-- Compile and Flash! -->
 					</button>
-					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#serialModal" title="Serial Monitor">
+					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#serialModal" data-step="11" data-intro="Serial Monitor">
 						<!-- Open Serial Monitor -->
 					</button></td>
 
@@ -693,12 +691,12 @@
 		</table></td>
 		</tr>
 		<tr >
-			<div id="leftPage">
-				<iframe id="content_blocks" src="frame.html" align="left"></iframe>
+			<div id="leftPage" >
+				<iframe id="content_blocks" src="frame.html" align="left" data-step="12" data-intro="Blockly"></iframe>
 			</div>
 			<div id="rightPage">
 				<div id="content_arduino">
-					<textarea id="textarea_arduino"></textarea>
+					<textarea id="textarea_arduino" data-step="13" data-intro="Arduino"></textarea>
 				</div>
 			</div>
 			<div id="content_xml">
@@ -717,14 +715,49 @@
 		</table>
 
 		<script type="text/javascript">
+
 			function getFiles() {
 				return {
 					"sketch.ino" : $("#textarea_arduino").val()
 				}
 			}
-
-
+			
+			function startTour() {
+				var tour = introJs()
+				tour.setOption('tooltipPosition', 'auto');
+				tour.setOption('positionPrecedence', ['right', 'left', 'bottom', 'top'])
+				tour.oncomplete(function(){
+					$('#drawer').animate({
+						top : "-300px"
+					}, 500);
+					$('.drawerToggle').animate({
+						top : "0px"
+					}, 500);
+					$('.drawerToggle').addClass('drawerClosed');
+					$('.drawerToggle').removeClass('drawerOpened');
+				})	
+				tour.onexit(function(){
+					$('#drawer').animate({
+						top : "-300px"
+					}, 500);
+					$('.drawerToggle').animate({
+						top : "0px"
+					}, 500);
+					$('.drawerToggle').addClass('drawerClosed');
+					$('.drawerToggle').removeClass('drawerOpened');
+				})	
+				tour.start()
+			}
+ 
 			$(document).ready(function() {
+				var drawerToggleAnimation = setInterval(function() {
+					$('.drawerToggle').animate({
+			            opacity:"0.1"
+			        }, 400, function() {
+			        	$('.drawerToggle').animate({opacity:"1"},400);
+			        });
+			    }, 800);
+				
 				compilerflasher = new compilerflasher(getFiles);
 
 				$('#compiler').mouseover(function() {
@@ -744,6 +777,7 @@
 				});
 
 				$('.drawerToggle').click(function() {
+					clearInterval(drawerToggleAnimation);
 					if ($(this).hasClass('drawerClosed')) {
 						$('#drawer').animate({
 							top : "0px"

@@ -1002,8 +1002,7 @@ compilerflasher = function(lf){
     if($("button#cb_cf_flash_btn").length > 0)
     {
         $("#cb_cf_flash_btn")
-                .click(function(){
-                	arduinoCode();             	
+                .click(function(){            	
                 	$('#flashModal').modal('show');
                 	cb.usbflash();
                 });
