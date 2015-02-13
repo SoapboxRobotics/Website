@@ -6,11 +6,18 @@
 		<script type="text/javascript" src="Blob.js"></script>
 		<script type="text/javascript" src="FileSaver.min.js"></script>
 		<script type="text/javascript" src="blockly_helper.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>	
+		<!--  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>-->
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/underscore-min.js" type="text/javascript"></script>
+		<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+		<script src="js/backbone-min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>	
 		<script src="js/compilerflasher.min.js" type="text/javascript"></script>
 		<script src="js/smoothie.min.js" type="text/javascript"></script>
-		<script src="js/intro.js" type="text/javascript"></script>
+		<script src="js/tourist.js" type="text/javascript"></script>
 
 		<script>
 			/**
@@ -129,12 +136,12 @@
 				}
 			}
 		</script>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/introjs.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link href="css/tourist.css" rel="stylesheet">
 		<style>
 			p {
 				/*position: absolute;*/
-				z-index: 9999999;
+				z-index: 99999;
 				color: black;
 				font-weight: bold;
 				font-size: 2em;
@@ -523,34 +530,35 @@
 		</style>
 	</head>
 	<body>
+		
 		<div id="leftBG">
 			
 		</div>
 		<div id="rightBG">
 
 		</div>
-
+		
 		<div id="drawer">
 			<div id="settingsDrawer" style="border-bottom: 2px solid grey; height: 100px;">
-				<select id="cb_cf_ports" data-step="2" data-intro="Select Port"></select>
-				<select id="cb_cf_boards" data-step="3" data-intro="Select Board"></select>
-				<select id="cb_cf_baud_rates" data-step="4" data-intro="Select Baud Rates"></select>
+				<select id="cb_cf_ports" class="tour-block"></select>
+				<select id="cb_cf_boards" ></select>
+				<select id="cb_cf_baud_rates"></select>
 			</div>
 			<div id="fileDrawer" style="border-bottom: 2px solid grey; height: 100px; ">
 
 				<tr style="display:inline-block">
 					<td></td>
 					<td>
-					<button  id="save" class="drawerButton" onclick="save()" data-step="5" data-intro="Save">
+					<button  id="save" class="drawerButton" onclick="save()">
 						<!-- Save -->
 					</button></td>
 					<td>
-					<button class="drawerButton" id="fakeload" data-step="6" data-intro="Load" >
+					<button class="drawerButton" id="fakeload" >
 						<!-- Load -->
 					</button></td>
 
 					<td>
-					<button id="discard" class="drawerButton" onclick="discard()" data-step="7" data-intro="Discard">
+					<button id="discard" class="drawerButton" onclick="discard()">
 						<!-- Discard -->
 					</button></td>
 					<input type="file" id="load" style="display: none;"/>
@@ -558,7 +566,7 @@
 
 			</div>
 			<div id="examplesDrawer">
-				<button id="tutorial" onclick= "startTour()">Tutorial</button>
+				<button id="tutorial" onclick="startTour()">Tour Compiler</button>
 			</div>
 
 		</div>
@@ -578,7 +586,7 @@
 			</div>
 			<a href="http://www.soapboxrobotics.com/" id="homeLink"></a>
 		</div>
-		<button  class="drawerToggle drawerClosed" data-step="1" data-intro="Click here to show setting"></button>
+		<button  class="drawerToggle drawerClosed"></button>
 
 		<!-- Modal -->
 		<div class="modal fade" id="startupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -674,16 +682,16 @@
 					<td id="tab_blocks" class="taboff"  onclick="tabClick(this.id)">Blockly</td>
 					<td id="tab_xml" class="taboff"  onclick="tabClick(this.id)">XML</td>
 					<td class="tabmin">
-					<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()" title="Write" data-step="8" data-intro="Write">
+					<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()" title="Write" class="tour-block">
 						<!-- Arduino -->
 					</button>
-					<button class="columnIcon" id="cb_cf_verify_btn" data-toggle="modal" data-target="#verifyModal" title="Compile" data-step="9" data-intro="Compile">
+					<button class="columnIcon" id="cb_cf_verify_btn" data-toggle="modal" data-target="#verifyModal" title="Compile" >
 						<!-- Compile the Code! -->
 					</button>
-					<button class="columnIcon" id="cb_cf_flash_btn" data-toggle="modal" data-target="#flashModal" title="Compile and Flash" data-step="10" data-intro="Compile and Flash">
+					<button class="columnIcon" id="cb_cf_flash_btn" data-toggle="modal" data-target="#flashModal" title="Compile and Flash" >
 						<!-- Compile and Flash! -->
 					</button>
-					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#serialModal" data-step="11" data-intro="Serial Monitor">
+					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#serialModal" >
 						<!-- Open Serial Monitor -->
 					</button></td>
 
@@ -692,11 +700,11 @@
 		</tr>
 		<tr >
 			<div id="leftPage" >
-				<iframe id="content_blocks" src="frame.html" align="left" data-step="12" data-intro="Blockly"></iframe>
+				<iframe id="content_blocks" src="frame.html" align="left" ></iframe>
 			</div>
 			<div id="rightPage">
 				<div id="content_arduino">
-					<textarea id="textarea_arduino" data-step="13" data-intro="Arduino"></textarea>
+					<textarea id="textarea_arduino" ></textarea>
 				</div>
 			</div>
 			<div id="content_xml">
@@ -721,43 +729,121 @@
 					"sketch.ino" : $("#textarea_arduino").val()
 				}
 			}
-			
-			function startTour() {
-				var tour = introJs()
-				tour.setOption('tooltipPosition', 'auto');
-				tour.setOption('positionPrecedence', ['right', 'left', 'bottom', 'top'])
-				tour.oncomplete(function(){
-					$('#drawer').animate({
-						top : "-300px"
-					}, 500);
-					$('.drawerToggle').animate({
-						top : "0px"
-					}, 500);
-					$('.drawerToggle').addClass('drawerClosed');
-					$('.drawerToggle').removeClass('drawerOpened');
-				})	
-				tour.onexit(function(){
-					$('#drawer').animate({
-						top : "-300px"
-					}, 500);
-					$('.drawerToggle').animate({
-						top : "0px"
-					}, 500);
-					$('.drawerToggle').addClass('drawerClosed');
-					$('.drawerToggle').removeClass('drawerOpened');
-				})	
-				tour.start()
+			function startTour(){
+				var steps = [{	
+				  content: '<p>Start by clicking this</p>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#cb_cf_ports'),
+				  my: 'left center',
+				  at: 'right center'
+				}, {
+				  content: '<p>Select Port</p>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#cb_cf_boards'),
+				  my: 'left center',
+				  at: 'right center'
+				},{
+				  content: '<p>Select Port</p>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#cb_cf_baud_rates'),
+				  my: 'left center',
+				  at: 'right center'
+				},{
+				  content: '<p>Select Port</p>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#save'),
+				  my: 'left center',
+				  at: 'right center'
+				},{
+					  content: '<p>Select Port</p>',
+					  highlightTarget: true,
+					  nextButton: true,
+					  target: $('#fakeload'),
+					  my: 'left center',
+					  at: 'right center'
+				},{
+					  content: '<p>Select Port</p>',
+					  highlightTarget: true,
+					  nextButton: true,
+					  target: $('#discard'),
+					  my: 'left center',
+					  at: 'right center'
+				},{
+					  content: '<p>Select Port</p>',
+					  highlightTarget: true,
+					  nextButton: true,
+					  target: $('#content_blocks'),
+					  my: 'left center',
+					  at: 'right center',
+					  setup: function(tour, options) {
+						  $('#drawer').animate({
+								top : "-300px"
+							}, 500);
+							$('.drawerToggle').animate({
+								top : "0px"
+							}, 500);
+					  },
+					  teardown: function(tour, options) {
+							$('.drawerToggle').addClass('drawerClosed');
+							$('.drawerToggle').removeClass('drawerOpened');  
+					  }
+				},{
+					  content: '<p>Select Port</p>',
+					  highlightTarget: true,
+					  nextButton: true,
+					  target: $('#content_arduino'),
+					  my: 'right center',
+					  at: 'left center'
+				},{
+					  content: '<p>Select Port</p>',
+					  highlightTarget: true,
+					  nextButton: true,
+					  target: $('#arduinoCode'),
+					  my: 'left center',
+					  at: 'right center'
+			    },{
+					  content: '<p>Select Port</p>',
+					  highlightTarget: true,
+					  nextButton: true,
+					  target: $('#cb_cf_verify_btn'),
+					  my: 'left center',
+					  at: 'right center'
+				},{
+					  content: '<p>Select Port</p>',
+					  highlightTarget: true,
+					  nextButton: true,
+					  target: $('#cb_cf_flash_btn'),
+					  my: 'left center',
+					  at: 'right center'
+				}
+				,{
+					  content: '<p>Select Port</p>',
+					  highlightTarget: true,
+					  nextButton: true,
+					  target: $('#cb_cf_serial_monitor_connect'),
+					  my: 'left center',
+					  at: 'right center'
+				}]
+				var tour = new Tourist.Tour({
+					  steps: steps,
+					  tipClass: 'Bootstrap',
+					  tipOptions:{ showEffect: 'slidein' }
+				});
+				tour.start();
 			}
- 
+		
 			$(document).ready(function() {
 				var drawerToggleAnimation = setInterval(function() {
 					$('.drawerToggle').animate({
-			            opacity:"0.1"
-			        }, 400, function() {
-			        	$('.drawerToggle').animate({opacity:"1"},400);
+			           opacity:"0.1"
+			        }, 600, function() {
+			        	$('.drawerToggle').animate({opacity:"1"},600);
 			        });
-			    }, 800);
-				
+			    }, 1200);
 				compilerflasher = new compilerflasher(getFiles);
 
 				$('#compiler').mouseover(function() {
@@ -803,6 +889,7 @@
 			function serialRead() {
 				document.getElementById('serialTest').value = compilerflasher.comparePluginVersions(2, 1);
 			}
+			//tour.start();
 
 		</script>
 	</body>
