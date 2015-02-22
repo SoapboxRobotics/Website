@@ -731,107 +731,107 @@
 			}
 			function startTour(){
 				var steps = [{	
-				  content: '<p>Start by clicking this</p>',
+				  content: '<h>Select Port</h><br><p>Click here and select the port that the Arduino is connected to</p><br>',
 				  highlightTarget: true,
 				  nextButton: true,
 				  target: $('#cb_cf_ports'),
 				  my: 'left center',
 				  at: 'right center'
 				}, {
-				  content: '<p>Select Port</p>',
+				  content: '<h>Select Board Type</h><br><p>Click here and select the board type of the Arduino<br><br>Default: Arduino Uno</p><br>',
 				  highlightTarget: true,
 				  nextButton: true,
 				  target: $('#cb_cf_boards'),
 				  my: 'left center',
 				  at: 'right center'
 				},{
-				  content: '<p>Select Port</p>',
+				  content: '<h>Select Baud Rate</h><br><p>Click here and select the Baud Rate of the Arduino connection. <br><br>Defaut: 19200</p><br>',
 				  highlightTarget: true,
 				  nextButton: true,
 				  target: $('#cb_cf_baud_rates'),
 				  my: 'left center',
 				  at: 'right center'
 				},{
-				  content: '<p>Select Port</p>',
+				  content: '<h>Save Blocks</h><br><p>Click here to download the blocks from the canvas to local drive as a XML file</p><br>',
 				  highlightTarget: true,
 				  nextButton: true,
 				  target: $('#save'),
 				  my: 'left center',
 				  at: 'right center'
 				},{
-					  content: '<p>Select Port</p>',
-					  highlightTarget: true,
-					  nextButton: true,
-					  target: $('#fakeload'),
-					  my: 'left center',
-					  at: 'right center'
+				  content: '<h>Load Blocks</h><br><p>Click here to load the XML file to generate blocks in the canvas</p><br>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#fakeload'),
+				  my: 'left center',
+				  at: 'right center'
 				},{
-					  content: '<p>Select Port</p>',
-					  highlightTarget: true,
-					  nextButton: true,
-					  target: $('#discard'),
-					  my: 'left center',
-					  at: 'right center'
+				  content: '<h>Remove Blocks</h><br><p>Click here to remove the blocks from the canvas</p><br>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#discard'),
+				  my: 'left center',
+				  at: 'right center'
 				},{
-					  content: '<p>Select Port</p>',
-					  highlightTarget: true,
-					  nextButton: true,
-					  target: $('#content_blocks'),
-					  my: 'left center',
-					  at: 'right center',
-					  setup: function(tour, options) {
-						  $('#drawer').animate({
-								top : "-300px"
-							}, 500);
-							$('.drawerToggle').animate({
-								top : "0px"
-							}, 500);
-					  },
-					  teardown: function(tour, options) {
-							$('.drawerToggle').addClass('drawerClosed');
-							$('.drawerToggle').removeClass('drawerOpened');  
-					  }
+				  content: '<h>Block Canvas</h><br><p>Drag & Drop blocks in the canvas and start programming away</p><br><p>Try blinking your Arduino now</p><br><p>Hint: </p><embed width="250" height="200" src="https://www.youtube.com/embed/KrKriOKx5lo"><br>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#content_blocks'),
+				  my: 'left center',
+				  at: 'right center',
+				  setup: function(tour, options) {
+					  $('#drawer').animate({
+							top : "-300px"
+						}, 500);
+						$('.drawerToggle').animate({
+							top : "0px"
+						}, 500);
+				  },
+				  teardown: function(tour, options) {
+						$('.drawerToggle').addClass('drawerClosed');
+						$('.drawerToggle').removeClass('drawerOpened');  
+				  }
 				},{
-					  content: '<p>Select Port</p>',
-					  highlightTarget: true,
-					  nextButton: true,
-					  target: $('#content_arduino'),
-					  my: 'right center',
-					  at: 'left center'
+				  content: '<h>Arduino code</h><br><p>Click here to convert Blockly blocks to Arduino code</p><br>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#arduinoCode'),
+				  my: 'right center',
+				  at: 'left center'
 				},{
-					  content: '<p>Select Port</p>',
-					  highlightTarget: true,
-					  nextButton: true,
-					  target: $('#arduinoCode'),
-					  my: 'left center',
-					  at: 'right center'
+				  content: '<h>Arduino Code</h><br><p>Click here to generate Arduino code</p><br><p>Try changing the duration of blinking by changing the delay</p><br>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#content_arduino'),
+				  my: 'right center',
+				  at: 'left center'
 			    },{
-					  content: '<p>Select Port</p>',
-					  highlightTarget: true,
-					  nextButton: true,
-					  target: $('#cb_cf_verify_btn'),
-					  my: 'left center',
-					  at: 'right center'
+				  content: '<h>Compile</h><br><p>Click here to compile the code</p><br><p>It also check for errors in the code </p><br>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#cb_cf_verify_btn'),
+				  my: 'left center',
+				  at: 'right center'
 				},{
-					  content: '<p>Select Port</p>',
-					  highlightTarget: true,
-					  nextButton: true,
-					  target: $('#cb_cf_flash_btn'),
-					  my: 'left center',
-					  at: 'right center'
+				  content: '<h>Upload to Arduino</h><br><p>Click here to upload code to program on Arduino</p><br>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#cb_cf_flash_btn'),
+				  my: 'left center',
+				  at: 'right center'
 				}
 				,{
-					  content: '<p>Select Port</p>',
-					  highlightTarget: true,
-					  nextButton: true,
-					  target: $('#cb_cf_serial_monitor_connect'),
-					  my: 'left center',
-					  at: 'right center'
+				  content: '<h>Serial Monitor</h><br><p>Click here to use the graph to visualize the serial port readings</p><br>',
+				  highlightTarget: true,
+				  nextButton: true,
+				  target: $('#cb_cf_serial_monitor_connect'),
+				  my: 'left center',
+				  at: 'right center'
 				}]
 				var tour = new Tourist.Tour({
-					  steps: steps,
-					  tipClass: 'Bootstrap',
-					  tipOptions:{ showEffect: 'slidein' }
+				  steps: steps,
+				  tipClass: 'Bootstrap',
+				  tipOptions:{ showEffect: 'slidein' }
 				});
 				tour.start();
 			}
@@ -840,10 +840,10 @@
 				var drawerToggleAnimation = setInterval(function() {
 					$('.drawerToggle').animate({
 			           opacity:"0.1"
-			        }, 600, function() {
-			        	$('.drawerToggle').animate({opacity:"1"},600);
+			        }, 500, function() {
+			        	$('.drawerToggle').animate({opacity:"1"},500);
 			        });
-			    }, 1200);
+			    }, 1000);
 				compilerflasher = new compilerflasher(getFiles);
 
 				$('#compiler').mouseover(function() {

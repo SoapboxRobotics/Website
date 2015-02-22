@@ -10,14 +10,21 @@
 /* bootstrap styles */
 .popover{
   padding: 0;
-  z-index: 99999;
+  z-index: 999999;
 }
 .popover .popover-content{
-  padding: 10px 0 0 0;
+  padding: 8px 0 0 0;
   min-width: 200px;
+}
+
+.popover .popover-content h{
+  margin: 0 8px 10px 8px;
+  font-size: 20px;
+  font-weight: bold;
 }
 .popover .popover-content p{
   margin: 0 8px 10px 8px;
+  font-size: 15px;
 }
 .popover .popover-content .action-label{
   background: rgba(0, 111, 255, 0.168627);
