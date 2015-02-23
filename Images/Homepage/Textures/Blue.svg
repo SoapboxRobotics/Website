@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="400"
+   height="400"
+   id="svg43773"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   style="enable-background:new"
+   sodipodi:docname="Blue.svg">
+  <defs
+     id="defs43775">
+    <filter
+       id="filter44419"
+       inkscape:label="Background Texture"
+       x="0"
+       y="0"
+       width="1"
+       height="1"
+       color-interpolation-filters="sRGB">
+      <feTurbulence
+         id="feTurbulence44421"
+         type="fractalNoise" />
+    </filter>
+    <filter
+       inkscape:label="Desaturate"
+       x="0"
+       y="0"
+       width="1"
+       height="1"
+       inkscape:menu="Color"
+       inkscape:menu-tooltip="Render in shades of gray by reducing saturation to zero"
+       color-interpolation-filters="sRGB"
+       id="filter44423">
+      <feColorMatrix
+         type="saturate"
+         values="0"
+         id="feColorMatrix44425" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter44427"
+       color-interpolation-filters="sRGB">
+      <feBlend
+         inkscape:collect="always"
+         mode="multiply"
+         in2="BackgroundImage"
+         id="feBlend44429" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="-57.978096"
+     inkscape:cy="380.98396"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1137"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata43778">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Background"
+     transform="translate(-248.23502,-135.52213)">
+    <rect
+       y="135.52213"
+       x="248.23502"
+       height="400"
+       width="400"
+       id="rect44415"
+       style="fill:#a5c0c9;fill-opacity:1;stroke:none" />
+  </g>
+  <g
+     inkscape:label="Background Texture"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="filter:url(#filter44427)"
+     transform="translate(-248.23502,-135.52213)">
+    <rect
+       style="fill:#a5c0c9;fill-opacity:1;stroke:none;filter:url(#filter44423)"
+       id="rect43789"
+       width="400"
+       height="400"
+       x="248.23502"
+       y="135.52213" />
+  </g>
+</svg>
