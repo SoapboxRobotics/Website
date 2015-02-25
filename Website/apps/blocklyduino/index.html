@@ -329,8 +329,8 @@
 			}
 
 			.columnIcon {
-				width: 7.5 vw;
-				height: 7.5 vw;
+				width: 7vw;
+				height: 7vw;
 				display: block;
 				border: none;
 			}
@@ -353,7 +353,7 @@
 				border: none;
 			}
 
-			#sample-button, #tutorial {
+			#sample-button {
 				border: 1px solid black;
 				padding: 5px 5em;
 			}
@@ -365,8 +365,7 @@
 				left: 0;
 				background-color: blue;
 				z-index: -5;
-				background-image: url(http://www.transparenttextures.com/patterns/shattered.png);
-				/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+				background-image: url('media/Textures/shattered.png');
 			}
 			#rightBG {
 				position: absolute;
@@ -375,8 +374,7 @@
 				right: 0;
 				background-color: #ff6000;
 				z-index: -5;
-				background-image: url(http://www.transparenttextures.com/patterns/shattered.png);
-				/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+				background-image: url('media/Textures/shattered.png');
 			}
 
 			#tab_blocks, #tab_xml {
@@ -411,6 +409,13 @@
 				width: 100px;
 				height: 100px;
 				background: transparent url("media/icons/Discard.svg");
+			}
+
+			#tutorial {
+				width: 155px;
+				height: 100px;
+				background: transparent url('media/icons/Tutorial.svg');
+				background-repeat: no-repeat;
 			}
 
 			.drawerButton {
@@ -468,16 +473,35 @@
 				color: blue;
 			}
 
+			.navBar a {
+				text-decoration: none;
+			}
+
+			.modal.in {
+				display: block;
+			}
+
+			#cb_cf_boards {
+				width: 30vw;
+			}
+
+			#flaticonAttr a {
+				color: lightblue;
+			}
+
+			#start {
+				background-image: url('media/StartArrow.svg');
+				width: 145.22px;
+				height: 104.86px;
+				background-size: 100%;
+				position: absolute;
+				left: 45px;
+				top: 50px;
+			}
+
 		</style>
 	</head>
 	<body>
-
-		<div id="leftBG">
-
-		</div>
-		<div id="rightBG">
-
-		</div>
 
 		<div id="drawer">
 			<div id="settingsDrawer" style="border-bottom: 2px solid grey; height: 100px;">
@@ -507,161 +531,181 @@
 
 			</div>
 			<div id="examplesDrawer">
-				<button id="tutorial" onclick="startTour()">
-					Tour Compiler
-				</button>
-			</div>
-
-		</div>
-		<div>
-			<td></td>
-		</div>
-		<div class="navBar">
-			<div id="navBarBG">
-				<tr>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" >Blog</a></td>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" id="projNav">Projects</a></td>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" id="compiler">Compiler</a></td>
-					<td><a href="http://www.soapboxrobotics.com/#!blog/c9we"class="navButton">About Us</a></td>
-				</tr>
-			</div>
-			<a href="http://www.soapboxrobotics.com/" id="homeLink"></a>
-		</div>
-		<button  class="drawerToggle drawerClosed"></button>
-
-		<!-- Modal -->
-		<div class="modal fade" id="startupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<p id="status">
-							Reminder
-						</p>
-					</div>
-					<div class="modal-body">
-						<p>
-							Please <a href="https://codebender.cc/static/plugin">Install</a>
-							Codebender plugin.
-							<br>
-							<br>
-							Arduino Upload & Serial Monitor are disabled
-					</div>
-					<div class="modal-footer">
-						<button type="button" id="serial_disconnect" data-toggle="modal" data-dismiss="modal">
-							OK
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Serial Modal -->
-		<div class="modal fade" id="serialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<canvas id="mycanvas" width="500" height="200"></canvas>
-					</div>
-					<div class="modal-body">
-						<textarea id="textarea_serialTest"></textarea>
-					</div>
-					<div class="modal-footer">
-						<button type="button" id="serial_disconnect" data-toggle="modal" data-dismiss="modal">
-							Disconnect
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Verify Modal -->
-		<div class="modal fade" id="verifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<p id="status">
-							Compiling
-						</p>
-					</div>
-					<div class="modal-body">
-						<p id="verify_modal_output"></p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" id="close_status" data-toggle="modal" data-dismiss="modal">
-							OK
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Flash Modal -->
-		<div class="modal fade" id="flashModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<p id="status">
-							Uploading
-						</p>
-					</div>
-					<div class="modal-body">
-						<p id="flash_modal_output"></p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" id="close_status" data-toggle="modal" data-dismiss="modal">
-							OK
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<table height="100%" width="100%">
-			<td>
-			<table>
-				<tr id="tabRow">
-					<td id="tab_blocks" class="taboff"  onclick="tabClick(this.id)">Blockly</td>
-					<td id="tab_xml" class="taboff"  onclick="tabClick(this.id)">XML</td>
-					<td class="tabmin">
-					<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()" title="Write" class="tour-block">
-						<!-- Arduino -->
-					</button>
-					<button class="columnIcon" id="cb_cf_verify_btn" data-toggle="modal" data-target="#verifyModal" title="Compile" >
-						<!-- Compile the Code! -->
-					</button>
-					<button class="columnIcon" id="cb_cf_flash_btn" data-toggle="modal" data-target="#flashModal" title="Compile and Flash" >
-						<!-- Compile and Flash! -->
-					</button>
-					<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#serialModal" >
-						<!-- Open Serial Monitor -->
+				<tr style="display:inline-block">
+					<td></td>
+					<td>
+					<button id="tutorial" class="drawerButton" onclick="startTour()" style="font-size:3vw; text-align: right; vertical-align: bottom; font-weight: bolder">
+						<!-- Tutorial -->
 					</button></td>
 
-			</td>
-		</table></td>
-		</tr>
-		<tr >
-			<div id="leftPage" >
-				<iframe id="content_blocks" src="frame.html" align="left" ></iframe>
+				</tr>
 			</div>
-			<div id="rightPage">
-				<div id="content_arduino">
-					<textarea id="textarea_arduino" ></textarea>
+
+		</div>
+
+		<div id="compilerBody">
+			<div id="leftBG"></div>
+			<div id="rightBG"></div>
+
+			<div id="start">
+
+			</div>
+
+			<div>
+				<td></td>
+			</div>
+			<div class="navBar">
+				<div id="navBarBG">
+					<tr>
+						<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" >Blog</a></td>
+						<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" id="projNav">Projects</a></td>
+						<td><a href="http://www.soapboxrobotics.com/#!blog/c9we" class="navButton" id="compiler">Compiler</a></td>
+						<td><a href="http://www.soapboxrobotics.com/#!blog/c9we"class="navButton">About Us</a></td>
+					</tr>
+				</div>
+				<a href="http://www.soapboxrobotics.com/" id="homeLink"></a>
+			</div>
+			<button  class="drawerToggle drawerClosed"></button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="startupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<p id="status">
+								Reminder
+							</p>
+						</div>
+						<div class="modal-body">
+							<p>
+								Please <a href="https://codebender.cc/static/plugin">Install</a>
+								Codebender plugin.
+								<br>
+								<br>
+								Arduino Upload & Serial Monitor are disabled
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="serial_disconnect" data-toggle="modal" data-dismiss="modal">
+								OK
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div id="content_xml">
-				<textarea id="textarea_xml" readonly></textarea>
-			</div></td>
-		</tr>
 
-		<tr>
-			<td><!-- <div id="serialTest">
-			<textarea id="textarea_serialTest"></textarea>
-			</div></td> -->
-		</tr>
-		<tr>
-			<!-- <td><canvas id="mycanvas" width="400" height="100"></canvas></td> -->
-		</tr>
-		</table>
+			<!-- Serial Modal -->
+			<div class="modal fade" id="serialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<canvas id="mycanvas" width="500" height="200"></canvas>
+						</div>
+						<div class="modal-body">
+							<textarea id="textarea_serialTest"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="serial_disconnect" data-toggle="modal" data-dismiss="modal">
+								Disconnect
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Verify Modal -->
+			<div class="modal fade" id="verifyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<p id="status">
+								Compiling
+							</p>
+						</div>
+						<div class="modal-body">
+							<p id="verify_modal_output"></p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="close_status" data-toggle="modal" data-dismiss="modal">
+								OK
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Flash Modal -->
+			<div class="modal fade" id="flashModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<p id="status">
+								Uploading
+							</p>
+						</div>
+						<div class="modal-body">
+							<p id="flash_modal_output"></p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" id="close_status" data-toggle="modal" data-dismiss="modal">
+								OK
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<table height="100%" width="100%">
+				<td>
+				<table>
+					<tr id="tabRow">
+						<td id="tab_blocks" class="taboff"  onclick="tabClick(this.id)">Blockly</td>
+						<td id="tab_xml" class="taboff"  onclick="tabClick(this.id)">XML</td>
+						<td class="tabmin">
+						<button class="columnIcon" id="arduinoCode" onclick="arduinoCode()" title="Write" class="tour-block">
+							<!-- Arduino -->
+						</button>
+						<button class="columnIcon" id="cb_cf_verify_btn" data-toggle="modal" data-target="#verifyModal" title="Compile" >
+							<!-- Compile the Code! -->
+						</button>
+						<button class="columnIcon" id="cb_cf_flash_btn" data-toggle="modal" data-target="#flashModal" title="Compile and Flash" >
+							<!-- Compile and Flash! -->
+						</button>
+						<button class="columnIcon" id="cb_cf_serial_monitor_connect" data-toggle="modal" data-target="#serialModal" >
+							<!-- Open Serial Monitor -->
+						</button></td>
+
+				</td>
+			</table></td>
+			</tr>
+			<tr >
+				<div id="leftPage" >
+					<iframe id="content_blocks" src="frame.html" align="left" ></iframe>
+				</div>
+				<div id="rightPage">
+					<div id="content_arduino">
+						<textarea id="textarea_arduino" ></textarea>
+					</div>
+				</div>
+				<div id="content_xml">
+					<textarea id="textarea_xml" readonly></textarea>
+				</div></td>
+			</tr>
+
+			<tr>
+				<td><!-- <div id="serialTest">
+				<textarea id="textarea_serialTest"></textarea>
+				</div></td> -->
+			</tr>
+			<tr>
+				<!-- <td><canvas id="mycanvas" width="400" height="100"></canvas></td> -->
+			</tr>
+			</table>
+
+			<div id="flaticonAttr" style="position:absolute; bottom: 0; color: white !important; font-family: Roboto-Regular; font-size:0.75vw;">
+				Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>
+			</div>
+
+		</div>
 
 		<script type="text/javascript">
 			function getFiles() {
@@ -672,50 +716,58 @@
 
 			function startTour() {
 				var steps = [{
-					content : '<h>Select Port</h><br><p>Click here and select the port that the Arduino is connected to</p><br>',
+					content : '<h>Select Port</h><br><p style="font-weight:regular">Select the communication port your Arduino is connected to</p><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#cb_cf_ports'),
-					my : 'left center',
+					my : 'left top',
 					at : 'right center'
 				}, {
-					content : '<h>Select Board Type</h><br><p>Click here and select the board type of the Arduino<br><br>Default: Arduino Uno</p><br>',
+					content : '<h>Select Board Type</h><br><p>Select your Arduino from this menu<br><br>Default: Arduino Uno</p><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#cb_cf_boards'),
-					my : 'left center',
+					my : 'left top',
 					at : 'right center'
 				}, {
-					content : '<h>Select Baud Rate</h><br><p>Click here and select the Baud Rate of the Arduino connection. <br><br>Defaut: 19200</p><br>',
+					content : '<h>Select Baud Rate</h><br><p>Select the baud rate you want to connect with your Arduino. If you are not sure, you can leave it at 19200<br><br>Defaut: 19200</p><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
+					closeButton : true,
 					target : $('#cb_cf_baud_rates'),
-					my : 'left center',
+					my : 'left top',
 					at : 'right center'
 				}, {
-					content : '<h>Save Blocks</h><br><p>Click here to download the blocks from the canvas to local drive as a XML file</p><br>',
+					content : '<h>Save Blocks</h><br><p>Download and save the blocks from the canvas to your local drive (XML File)</p><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#save'),
 					my : 'left center',
 					at : 'right center'
 				}, {
-					content : '<h>Load Blocks</h><br><p>Click here to load the XML file to generate blocks in the canvas</p><br>',
+					content : '<h>Load Blocks</h><br><p>Load the XML file from a previous session to generate saved blocks in the canvas</p><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#fakeload'),
 					my : 'left center',
 					at : 'right center'
 				}, {
-					content : '<h>Remove Blocks</h><br><p>Click here to remove the blocks from the canvas</p><br>',
+					content : '<h>Remove Blocks</h><br><p>Clear the existing the blocks from the canvas</p><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#discard'),
 					my : 'left center',
 					at : 'right center'
 				}, {
-					content : '<h>Block Canvas</h><br><p>Drag & Drop blocks in the canvas and start programming away</p><br><p>Try blinking your Arduino now</p><br><p>Hint: </p><embed width="250" height="200" src="https://www.youtube.com/embed/KrKriOKx5lo"><br>',
+					content : '<h>Block Canvas</h><br><p>Drag & Drop blocks in the canvas to start programming</p><br><p><b>Challenge</b></p><p>Try it with an LED. If you do not have one, try blinking the Arduino LED located just under digital pin 13</p><br><p><b>Hint</b></p><iframe width="250px" height="400px" style="margin-left: 10px; border: none; width: 250px; height: 300px;" src="https://www.youtube.com/embed/KrKriOKx5lo" frameborder="0" allowfullscreen></iframe><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#content_blocks'),
 					my : 'left center',
@@ -733,35 +785,39 @@
 						$('.drawerToggle').removeClass('drawerOpened');
 					}
 				}, {
-					content : '<h>Arduino code</h><br><p>Click here to convert Blockly blocks to Arduino code</p><br>',
+					content : '<h>Arduino code</h><br><p>Click here to convert the blocks in the canvas to Arduino code</p><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#arduinoCode'),
 					my : 'right center',
 					at : 'left center'
 				}, {
-					content : '<h>Arduino Code</h><br><p>Click here to generate Arduino code</p><br><p>Try changing the duration of blinking by changing the delay</p><br>',
+					content : '<h>Arduino Code</h><br><p>Your blocks have now been converted to a language your Arduino can recognize</p><br><p>Take a minute to compare how the code is structured in Arduino compared to your blocks in the Canvas</p><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#content_arduino'),
 					my : 'right center',
 					at : 'left center'
 				}, {
-					content : '<h>Compile</h><br><p>Click here to compile the code</p><br><p>It also check for errors in the code </p><br>',
+					content : '<h>Compile</h><br><p>Click here to compile the code</p><br><p>This checks if there are errors in your code</p><br>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#cb_cf_verify_btn'),
 					my : 'left center',
 					at : 'right center'
 				}, {
-					content : '<h>Upload to Arduino</h><br><p>Click here to upload code to program on Arduino</p><br>',
+					content : '<h>Upload to Arduino</h><br><p>If everything compiles properly, you may now upload your program into your Arduino</p><br><br><p>Click here to upload</p>',
 					highlightTarget : true,
+					okButton : true,
 					nextButton : true,
 					target : $('#cb_cf_flash_btn'),
 					my : 'left center',
 					at : 'right center'
 				}, {
-					content : '<h>Serial Monitor</h><br><p>Click here to use the graph to visualize the serial port readings</p><br>',
+					content : '<h>Serial Monitor</h><br><p>Finally, if you you want to view serial information from the Arduino, click here to open the Serial Monitor</p><br>',
 					highlightTarget : true,
 					nextButton : true,
 					target : $('#cb_cf_serial_monitor_connect'),
@@ -781,10 +837,10 @@
 
 			$(document).ready(function() {
 				var drawerToggleAnimation = setInterval(function() {
-					$('.drawerToggle').animate({
+					$('#start').animate({
 						opacity : "0.1"
-					}, 500, function() {
-						$('.drawerToggle').animate({
+					}, 600, function() {
+						$('#start').animate({
 							opacity : "1"
 						}, 500);
 					});
@@ -807,9 +863,11 @@
 					$('#projNav').html("Projects");
 				});
 
-				$('.drawerToggle').click(function() {
+				$('.drawerToggle').on('click', function() {
+
 					clearInterval(drawerToggleAnimation);
 					if ($(this).hasClass('drawerClosed')) {
+						$('#start').hide();
 						$('#drawer').animate({
 							top : "0px"
 						}, 500);
@@ -829,6 +887,23 @@
 						$(this).removeClass('drawerOpened');
 					}
 				});
+
+				$('#compilerBody').on('click', function(event) {
+					if (!$(event.target).closest('.drawerToggle').length) {
+						$('#drawer').animate({
+							top : "-300px"
+						}, 500);
+						$('.drawerToggle').animate({
+							top : "0px"
+						}, 500);
+
+						if ($('.drawerToggle').hasClass('drawerOpened')) {
+							$('.drawerToggle').addClass('drawerClosed');
+							$('.drawerToggle').removeClass('drawerOpened');
+						}
+					}
+
+				});
 			});
 
 			function serialRead() {
@@ -836,6 +911,25 @@
 			}
 
 			//tour.start();
+
+		</script>
+
+		<script>
+			(function(i, s, o, g, r, a, m) {
+				i['GoogleAnalyticsObject'] = r;
+				i[r] = i[r] ||
+				function() {
+					(i[r].q = i[r].q || []).push(arguments)
+				}, i[r].l = 1 * new Date();
+				a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+				a.async = 1;
+				a.src = g;
+				m.parentNode.insertBefore(a, m)
+			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+			ga('create', 'UA-60016233-1', 'auto');
+			ga('send', 'pageview');
 
 		</script>
 	</body>

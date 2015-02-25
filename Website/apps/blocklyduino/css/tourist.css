@@ -25,6 +25,7 @@
 .popover .popover-content p{
   margin: 0 8px 10px 8px;
   font-size: 15px;
+  font-weight: normal;
 }
 .popover .popover-content .action-label{
   background: rgba(0, 111, 255, 0.168627);
