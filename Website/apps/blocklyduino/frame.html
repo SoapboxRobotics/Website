@@ -2,7 +2,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Blockly Demo: Code</title>
-		<script type="text/javascript" src="../blockly_compressed.js"></script>
+		<script type="text/javascript" src="../blockly_uncompressed.js"></script>
 		<script type="text/javascript" src="../../generators/arduino.js"></script>
 		<script type="text/javascript" src="../../generators/arduino/control.js"></script>
 		<script type="text/javascript" src="../../generators/arduino/logic.js"></script>
@@ -11,12 +11,14 @@
 		<script type="text/javascript" src="../../generators/arduino/lists.js"></script>
 		<script type="text/javascript" src="../../generators/arduino/variables.js"></script>
 		<script type="text/javascript" src="../../generators/arduino/procedures.js"></script>
+		<script type="text/javascript" src="../../generators/arduino/library.js"></script>
 		<script type="text/javascript" src="../../language/en/_messages.js"></script>
 		<script type="text/javascript" src="../../language/common/control.js"></script>
 		<script type="text/javascript" src="../../language/common/logic.js"></script>
 		<script type="text/javascript" src="../../language/common/math.js"></script>
 		<script type="text/javascript" src="../../language/common/text.js"></script>
 		<script type="text/javascript" src="../../language/common/lists.js"></script>
+		<script type="text/javascript" src="../../language/common/library.js"></script>
 		<!--script type="text/javascript" src="../../language/common/variables.js"></script-->
 		<script type="text/javascript" src="../../language/common/procedures.js"></script>
 		<!-- define blocks -->
@@ -67,6 +69,13 @@
 				'controls_for', 'controls_whileUntil', 'controls_flow_statements',
 				//Communication
 				 'serial_print',
+				//Math
+				'math_arithmetic','math_prefix',
+				//Library
+				'math_library','servo_library','tone_library',
+				//Tone
+				'tone_duration',
+				//Servo
 				//Soapbox
 				//'car_logic', 'car_turnleft', 'car_turnright', 'car_turnforward', 'car_lefteye', 'car_righteye', 'serial_read'
 				];

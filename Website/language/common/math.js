@@ -328,3 +328,50 @@ Blockly.Language.math_random_float = {
     this.setTooltip(Blockly.LANG_MATH_RANDOM_FLOAT_TOOLTIP);
   }
 };
+
+Blockly.Language.math_prefix = {
+  // Advanced math operators with single operand.
+  category: Blockly.LANG_CATEGORY_MATH,
+  helpUrl: Blockly.LANG_MATH_NUMBER_HELPURL,
+  init: function() {
+    this.setColour(230);
+    this.appendValueInput('NUM')
+        .setCheck(Number)
+        .appendTitle(new Blockly.FieldDropdown(this.OPERATORS), 'OP');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getTitleValue('OP');
+      return Blockly.Language.math_single.TOOLTIPS[mode];
+    });
+  }
+};
+
+Blockly.Language.math_prefix.OPERATORS =
+    [['++', '++'],
+    ['--', '--']];
+
+Blockly.Language.math_suffix = {
+  // Advanced math operators with single operand.
+  category: Blockly.LANG_CATEGORY_MATH,
+  helpUrl: Blockly.LANG_MATH_NUMBER_HELPURL,
+  init: function() {
+    this.setColour(230);
+    this.appendDummyInput()
+    .appendTitle(new Blockly.FieldDropdown(this.OPERATORS), 'OP');
+    this.setOutput(true, Number);
+
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      var mode = thisBlock.getTitleValue('OP');
+      return Blockly.Language.math_single.TOOLTIPS[mode];
+    });
+  }
+};
+
+Blockly.Language.math_suffix.OPERATORS =
+    [['++', '++'],
+    ['--', '--']];

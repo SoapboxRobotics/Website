@@ -205,6 +205,27 @@ Blockly.Language.serial_print = {
   }
 };
 
+Blockly.Language.tone_duration = {
+  category: 'Tone',
+  helpUrl: 'http://arduino.cc/en/Reference/Tone',
+  init: function() {
+    this.setColour(230);
+    this.appendDummyInput("")
+        .appendTitle("TONE PIN#")
+        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+    this.appendValueInput("FREQ", Number)
+        .appendTitle("Frequency")
+        .setCheck(Number);
+    this.appendValueInput("DELAY", Number)
+    	.appendTitle("Delay")
+    	.setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Write Tone to a PIN with frequency and delay');
+  }
+};
+
 // define generators
 Blockly.Arduino = Blockly.Generator.get('Arduino');
 
@@ -290,7 +311,7 @@ Blockly.Arduino.servo_move = function() {
   var delay_time = Blockly.Arduino.valueToCode(this, 'DELAY_TIME', Blockly.Arduino.ORDER_ATOMIC) || '1000'
   //delay_time = delay_time.replace('(','').replace(')','');
   
-  Blockly.Arduino.definitions_['define_servo'] = '#include <Servo.h>\n';
+  Blockly.Arduino.definitions_['define_servo'] = '#include "Servo.h";\n';
   Blockly.Arduino.definitions_['var_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';\n';
   Blockly.Arduino.setups_['setup_servo_'+dropdown_pin] = 'servo_'+dropdown_pin+'.attach('+dropdown_pin+');\n';
   
@@ -301,7 +322,7 @@ Blockly.Arduino.servo_move = function() {
 Blockly.Arduino.servo_read_degrees = function() {
   var dropdown_pin = this.getTitleValue('PIN');
   
-  Blockly.Arduino.definitions_['define_servo'] = '#include &lt;Servo.h&gt;\n';
+  Blockly.Arduino.definitions_['define_servo'] = '#include "Servo.h";\n';
   Blockly.Arduino.definitions_['var_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';\n';
   Blockly.Arduino.setups_['setup_servo_'+dropdown_pin] = 'servo_'+dropdown_pin+'.attach('+dropdown_pin+');\n';
   
@@ -317,4 +338,15 @@ Blockly.Arduino.serial_print = function() {
   
   var code = 'Serial.print('+content+');\nSerial.print(\'\\t\');\n';
   return code;
+};
+
+Blockly.Arduino.tone_duration = function() {
+  var dropdown_pin = this.getTitleValue('PIN');
+  //var dropdown_stat = this.getTitleValue('STAT');
+  var freq = Blockly.Arduino.valueToCode(this, 'FREQ', Blockly.Arduino.ORDER_ATOMIC);
+  var delay = Blockly.Arduino.valueToCode(this, 'DELAY', Blockly.Arduino.ORDER_ATOMIC);
+  //Blockly.Arduino.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
+  var code = 'int pinOut = '+dropdown_pin+';\n  int freq = '+freq+';\n  int duration = '+delay+';\n  tone(pinOut,freq,duration);\n';
+  Blockly.Arduino.setups_['tone_output_'+dropdown_pin] = code;
+  return "";
 };

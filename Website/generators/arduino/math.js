@@ -38,6 +38,7 @@ Blockly.Arduino.math_number = function() {
 
 Blockly.Arduino.math_arithmetic = function() {
   // Basic arithmetic operators, and power.
+  Blockly.Arduino.definitions_['define_math'] = '#include "math.h"\n';
   var mode = this.getTitleValue('OP');
   var tuple = Blockly.Arduino.math_arithmetic.OPERATORS[mode];
   var operator = tuple[0];
@@ -46,7 +47,7 @@ Blockly.Arduino.math_arithmetic = function() {
   var argument1 = Blockly.Arduino.valueToCode(this, 'B', order) || '0';
   var code;
   if (!operator) {
-    code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
+    code = 'pow(' + argument0 + ', ' + argument1 + ')';
     return [code, Blockly.Arduino.ORDER_UNARY_POSTFIX];
   }
   code = argument0 + operator + argument1;
@@ -63,6 +64,7 @@ Blockly.Arduino.math_arithmetic.OPERATORS = {
 
 Blockly.Arduino.math_change = function() {
   // Add to a variable in place.
+  Blockly.Arduino.definitions_['define_math'] = '#include "math.h"\n';
   var argument0 = Blockly.Arduino.valueToCode(this, 'DELTA',
       Blockly.Arduino.ORDER_ADDITIVE) || '0';
   var varName = Blockly.Arduino.variableDB_.getName(this.getTitleValue('VAR'),
@@ -73,6 +75,7 @@ Blockly.Arduino.math_change = function() {
 
 Blockly.Arduino.math_single = function() {
   // Math operators with single operand.
+  Blockly.Arduino.definitions_['define_math'] = '#include "math.h"\n';
   var operator = this.getTitleValue('OP');
   var code;
   var arg;
@@ -163,6 +166,7 @@ Blockly.Arduino.math_trig = Blockly.Arduino.math_single;
 
 Blockly.Arduino.math_on_list = function() {
   // Math functions for lists.
+  Blockly.Arduino.definitions_['define_math'] = '#include "math.h"\n';
   var func = this.getTitleValue('OP');
   var list = Blockly.Arduino.valueToCode(this, 'LIST',
       Blockly.Arduino.ORDER_NONE) || '[]';
@@ -348,6 +352,7 @@ Blockly.Arduino.math_on_list = function() {
 };
 
 Blockly.Arduino.math_constrain = function() {
+  Blockly.Arduino.definitions_['define_math'] = '#include "math.h"\n';
   // Constrain a number between two limits.
   var argument0 = Blockly.Arduino.valueToCode(this, 'VALUE',
       Blockly.Arduino.ORDER_NONE) || '0';
@@ -361,6 +366,7 @@ Blockly.Arduino.math_constrain = function() {
 };
 
 Blockly.Arduino.math_modulo = function() {
+  Blockly.Arduino.definitions_['define_math'] = '#include "math.h"\n';
   // Remainder computation.
   var argument0 = Blockly.Arduino.valueToCode(this, 'DIVIDEND',
       Blockly.Arduino.ORDER_MULTIPLICATIVE) || '0';
@@ -371,6 +377,7 @@ Blockly.Arduino.math_modulo = function() {
 };
 
 Blockly.Arduino.math_random_int = function() {
+  Blockly.Arduino.definitions_['define_math'] = '#include "math.h"\n';
   // Random integer between [X] and [Y].
   var argument0 = Blockly.Arduino.valueToCode(this, 'FROM',
       Blockly.Arduino.ORDER_NONE) || '0';
@@ -399,5 +406,24 @@ Blockly.Arduino.math_random_int = function() {
 
 Blockly.Arduino.math_random_float = function() {
   // Random fraction between 0 and 1.
+  Blockly.Arduino.definitions_['define_math'] = '#include "math.h"\n';
   return ['Math.random()', Blockly.Arduino.ORDER_UNARY_POSTFIX];
 };
+
+Blockly.Arduino.math_prefix = function() {
+	var operator = this.getTitleValue('OP');
+	var arg = Blockly.Arduino.valueToCode(this, 'NUM',
+		      Blockly.Arduino.ORDER_NONE) || '0';
+
+	var code = arg + operator + ';\n';
+	return code;
+
+	
+}
+
+Blockly.Arduino.math_suffix = function() {
+	var operator = this.getTitleValue('OP');
+
+	return operator;
+	
+}
