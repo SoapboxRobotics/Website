@@ -342,11 +342,9 @@ Blockly.Arduino.serial_print = function() {
 
 Blockly.Arduino.tone_duration = function() {
   var dropdown_pin = this.getTitleValue('PIN');
-  //var dropdown_stat = this.getTitleValue('STAT');
   var freq = Blockly.Arduino.valueToCode(this, 'FREQ', Blockly.Arduino.ORDER_ATOMIC);
-  var delay = Blockly.Arduino.valueToCode(this, 'DELAY', Blockly.Arduino.ORDER_ATOMIC);
+  var duration = Blockly.Arduino.valueToCode(this, 'DELAY', Blockly.Arduino.ORDER_ATOMIC);
   //Blockly.Arduino.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-  var code = 'int pinOut = '+dropdown_pin+';\n  int freq = '+freq+';\n  int duration = '+delay+';\n  tone(pinOut,freq,duration);\n';
-  Blockly.Arduino.setups_['tone_output_'+dropdown_pin] = code;
-  return "";
+  var code = 'tone(' +dropdown_pin+ ',' +freq+ ',' +duration+ ');\n';
+  return code;
 };
