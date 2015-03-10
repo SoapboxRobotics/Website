@@ -214,11 +214,44 @@ Blockly.Language.tone_duration = {
         .appendTitle("TONE PIN#")
         .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
     this.appendValueInput("FREQ", Number)
-        .appendTitle("Frequency")
+        .appendTitle("Frequency (Hz)")
         .setCheck(Number);
     this.appendValueInput("DELAY", Number)
-    	.appendTitle("Delay")
+    	.appendTitle("Delay (ms)")
     	.setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Write Tone to a PIN with frequency and delay');
+  }
+};
+
+Blockly.Language.tone_noduration = {
+  category: 'Tone',
+  helpUrl: 'http://arduino.cc/en/Reference/Tone',
+  init: function() {
+    this.setColour(230);
+    this.appendDummyInput("")
+        .appendTitle("TONE PIN#")
+        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+    this.appendValueInput("FREQ", Number)
+        .appendTitle("Frequency (Hz)")
+        .setCheck(Number);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Write Tone to a PIN with frequency and delay');
+  }
+};
+
+Blockly.Language.notone = {
+  category: 'Tone',
+  helpUrl: 'http://arduino.cc/en/Reference/Tone',
+  init: function() {
+    this.setColour(230);
+    this.appendDummyInput("")
+        .appendTitle("NO TONE PIN#")
+        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -346,5 +379,20 @@ Blockly.Arduino.tone_duration = function() {
   var duration = Blockly.Arduino.valueToCode(this, 'DELAY', Blockly.Arduino.ORDER_ATOMIC);
   //Blockly.Arduino.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
   var code = 'tone(' +dropdown_pin+ ',' +freq+ ',' +duration+ ');\n';
+  return code;
+};
+
+Blockly.Arduino.tone_noduration = function() {
+  var dropdown_pin = this.getTitleValue('PIN');
+  var freq = Blockly.Arduino.valueToCode(this, 'FREQ', Blockly.Arduino.ORDER_ATOMIC);
+  //Blockly.Arduino.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
+  var code = 'tone(' +dropdown_pin+ ',' +freq+ ');\n';
+  return code;
+};
+
+Blockly.Arduino.notone = function() {
+  var dropdown_pin = this.getTitleValue('PIN');
+  //Blockly.Arduino.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
+  var code = 'noTone(' +dropdown_pin+ ');\n';
   return code;
 };
