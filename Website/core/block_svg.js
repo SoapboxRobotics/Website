@@ -87,7 +87,7 @@ Blockly.BlockSvg.SEP_SPACE_X = 10;
  * Vertical space between elements.
  * @const
  */
-Blockly.BlockSvg.SEP_SPACE_Y = 5;
+Blockly.BlockSvg.SEP_SPACE_Y = 10;
 /**
  * Minimum height of a block.
  * @const
@@ -102,7 +102,7 @@ Blockly.BlockSvg.TAB_HEIGHT = 20;
  * Width of horizontal puzzle tab.
  * @const
  */
-Blockly.BlockSvg.TAB_WIDTH = 8;
+Blockly.BlockSvg.TAB_WIDTH = 12;
 /**
  * Width of vertical tab (inc left margin).
  * @const
@@ -112,7 +112,7 @@ Blockly.BlockSvg.NOTCH_WIDTH = 30;
  * Rounded corner radius.
  * @const
  */
-Blockly.BlockSvg.CORNER_RADIUS = 8;
+Blockly.BlockSvg.CORNER_RADIUS = 1;
 /**
  * Minimum height of title rows.
  * @const

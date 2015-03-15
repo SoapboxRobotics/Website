@@ -108,15 +108,15 @@ Blockly.Tooltip.OFFSET_Y = 10;
 /**
  * Radius mouse can move before killing tooltip.
  */
-Blockly.Tooltip.RADIUS_OK = 10;
+Blockly.Tooltip.RADIUS_OK = 20;
 /**
  * Delay before tooltip appears.
  */
-Blockly.Tooltip.HOVER_MS = 500;
+Blockly.Tooltip.HOVER_MS = 100;
 /**
  * Horizontal padding between text and background.
  */
-Blockly.Tooltip.MARGINS = 5;
+Blockly.Tooltip.MARGINS = 10;
 
 /**
  * Create the tooltip elements.  Only needs to be called once.
@@ -270,7 +270,7 @@ Blockly.Tooltip.show_ = function() {
   // Resize the background and shadow to fit.
   var bBox = Blockly.Tooltip.svgText_.getBBox();
   var width = 2 * Blockly.Tooltip.MARGINS + bBox.width;
-  var height = bBox.height;
+  var height = bBox.height + 25;
   Blockly.Tooltip.svgBackground_.setAttribute('width', width);
   Blockly.Tooltip.svgBackground_.setAttribute('height', height);
   Blockly.Tooltip.svgShadow_.setAttribute('width', width);

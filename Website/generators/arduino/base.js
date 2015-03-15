@@ -156,18 +156,13 @@ Blockly.Language.servo_move = {
   init: function() {
     this.setColour(190);
     this.appendDummyInput("")
-        .appendTitle("Servo")
-        .appendTitle(new Blockly.FieldImage("http://www.seeedstudio.com/depot/images/product/a991.jpg", 64, 64))
+        .appendTitle("Servo Write")
         .appendTitle("PIN#")
         .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN")
     this.appendValueInput("DEGREE", Number)
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendTitle("Degree (0~180)");
-    this.appendValueInput("DELAY_TIME", Number)
-        .setCheck(Number)
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle("Delay");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('move between 0~180 degree');
@@ -180,13 +175,9 @@ Blockly.Language.servo_read_degrees = {
   init: function() {
     this.setColour(190);
     this.appendDummyInput("")
-        .appendTitle("Servo")
-        .appendTitle(new Blockly.FieldImage("http://www.seeedstudio.com/depot/images/product/a991.jpg", 64, 64))
+        .appendTitle("Servo Read")
         .appendTitle("PIN#")
         .appendTitle(new Blockly.FieldDropdown(profile.default.digital), "PIN");
-    this.appendDummyInput("")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendTitle("Read Degrees")
     this.setOutput(true, Number);
     this.setTooltip('return that degree with the last servo move.');
   }
@@ -341,14 +332,13 @@ Blockly.Arduino.servo_move = function() {
   var dropdown_pin = this.getTitleValue('PIN');
   var value_degree = Blockly.Arduino.valueToCode(this, 'DEGREE', Blockly.Arduino.ORDER_ATOMIC);
   //value_degree = value_degree.replace('(','').replace(')','')
-  var delay_time = Blockly.Arduino.valueToCode(this, 'DELAY_TIME', Blockly.Arduino.ORDER_ATOMIC) || '1000'
   //delay_time = delay_time.replace('(','').replace(')','');
   
   Blockly.Arduino.definitions_['define_servo'] = '#include "Servo.h";\n';
   Blockly.Arduino.definitions_['var_servo'+dropdown_pin] = 'Servo servo_'+dropdown_pin+';\n';
   Blockly.Arduino.setups_['setup_servo_'+dropdown_pin] = 'servo_'+dropdown_pin+'.attach('+dropdown_pin+');\n';
   
-  var code = 'servo_'+dropdown_pin+'.write('+value_degree+');\n'+'delay(' + delay_time + ');\n';
+  var code = 'servo_'+dropdown_pin+'.write('+value_degree+');\n';
   return code;
 };
 
@@ -360,14 +350,15 @@ Blockly.Arduino.servo_read_degrees = function() {
   Blockly.Arduino.setups_['setup_servo_'+dropdown_pin] = 'servo_'+dropdown_pin+'.attach('+dropdown_pin+');\n';
   
   var code = 'servo_'+dropdown_pin+'.read()';
-  return code;
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+
 };
 
 Blockly.Arduino.serial_print = function() {
   var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0'
   //content = content.replace('(','').replace(')','');
   
-  Blockly.Arduino.setups_['setup_serial_'+profile.default.serial] = 'Serial.begin('+profile.default.serial+');\n';
+  Blockly.Arduino.setups_['setup_serial_'+profile.default.serial] = 'Serial.begin(19200);\n';
   
   var code = 'Serial.print('+content+');\nSerial.print(\'\\t\');\n';
   return code;
