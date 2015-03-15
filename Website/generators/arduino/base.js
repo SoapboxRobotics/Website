@@ -112,7 +112,7 @@ Blockly.Language.inout_analog_write = {
     this.setColour(230);
     this.appendDummyInput("")
         .appendTitle("AnalogWrite PIN#")
-        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+        .appendTitle(new Blockly.FieldDropdown(profile.default.analogonly), "PIN");
     this.appendValueInput("NUM", Number)
         .appendTitle("value")
         .setCheck(Number);
@@ -130,7 +130,7 @@ Blockly.Language.inout_analog_read = {
     this.setColour(230);
     this.appendDummyInput("")
         .appendTitle("AnalogRead PIN#")
-        .appendTitle(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+        .appendTitle(new Blockly.FieldDropdown(profile.default.analogonly), "PIN");
     this.setOutput(true, Number);
     this.setTooltip('Return value between 0 and 1024');
   }
@@ -189,7 +189,9 @@ Blockly.Language.serial_print = {
   init: function() {
     this.setColour(230);
     this.appendValueInput("CONTENT", String)
-        .appendTitle("Serial Print");
+        .appendTitle("Serial Print @")
+        .appendTitle("Baud Rate")
+        .appendTitle(new Blockly.FieldDropdown(profile.default.serial),"BAUD");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('Prints data to the console/serial port as human-readable ASCII text.');
@@ -355,10 +357,11 @@ Blockly.Arduino.servo_read_degrees = function() {
 };
 
 Blockly.Arduino.serial_print = function() {
-  var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0'
+  var baudrate = this.getTitleValue('BAUD');
+  var content = Blockly.Arduino.valueToCode(this, 'CONTENT', Blockly.Arduino.ORDER_ATOMIC) || '0';
   //content = content.replace('(','').replace(')','');
   
-  Blockly.Arduino.setups_['setup_serial_'+profile.default.serial] = 'Serial.begin(19200);\n';
+  Blockly.Arduino.setups_['setup_serial_'+profile.default.serial] = 'Serial.begin('+baudrate+');\n';
   
   var code = 'Serial.print('+content+');\nSerial.print(\'\\t\');\n';
   return code;

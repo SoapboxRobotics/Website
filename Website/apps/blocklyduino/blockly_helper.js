@@ -49,7 +49,7 @@ function save() {
   // saveAs(builder.getBlob('text/plain;charset=utf-8'), 'blockduino.xml');
   console.log("saving blob");
   var blob = new Blob([data], {type: 'text/xml'});
-  saveAs(blob, 'blockduino.xml');
+  saveAs(blob, 'soapboxrobotics.xml');
 }
 
 /**
