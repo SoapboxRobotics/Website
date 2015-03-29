@@ -90,7 +90,7 @@
 
 			function arduinoCode() {
 				var arduinoTextarea = document.getElementById('textarea_arduino');
-				arduinoTextarea.value = Blockly.Generator.workspaceToCode('Arduino');
+				arduinoTextarea.value = Blockly.Arduino.workspaceToCode();
 				arduinoTextarea.focus();
 
 			}
